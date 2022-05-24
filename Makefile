@@ -6,7 +6,7 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/29 16:05:24 by cfatrane          #+#    #+#              #
-#    Updated: 2022/05/23 13:56:29 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/05/24 14:43:58 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,14 +22,13 @@ OBJ_PATH = ./objs/
 
 CPPFLAGS = -I./includes/
 
-LIBFT_PATH = ./libs/libft/libft.a
-
-HEADER = ./includes/push_swap.h
+HEADER = ./includes/philosophers.h
 
 
 # Name
 
-SRC_NAME =	main.c					
+SRC_NAME =	test.c					\
+			main.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
@@ -41,19 +40,15 @@ OBJ = $(addprefix $(OBJ_PATH), $(OBJ_NAME))
 
 # Flags
 
-LDFLAGS = -L./libs/libft/
-
-LFT = -lft
-
 CC = gcc $(CFLAGS) $(SANITIZE) $(LLDBFLAG)
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = #-Wall -Wextra -Werror
 SANITIZE =# -fsanitize=address
-LLDBFLAG =# -g3
+LLDBFLAG = -g3
 
 # Rules
 
-all: libft $(NAME) 
+all: $(NAME) 
 
 
 $(NAME): $(OBJ) $(HEADER) ./Makefile
@@ -70,9 +65,6 @@ endif
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@mkdir $(OBJ_PATH) 2> /dev/null || true
 	@$(CC) $(CPPFLAGS) -o $@ -c $<
-
-libft:
-	@make -C./libs/libft/
 
 clean:
 	@make clean -C ./libs/libft/
