@@ -26,7 +26,7 @@ enum e_bool
 typedef struct s_data
 {
 	int				i;
-	pthread_t	*thread1;
+	pthread_t	thread1[1024];
 
 }				t_data;
 

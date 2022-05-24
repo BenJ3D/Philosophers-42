@@ -6,7 +6,7 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/29 16:05:24 by cfatrane          #+#    #+#              #
-#    Updated: 2022/05/24 14:43:58 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/05/24 17:22:29 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,14 +67,12 @@ $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@$(CC) $(CPPFLAGS) -o $@ -c $<
 
 clean:
-	@make clean -C ./libs/libft/
 	@echo "\033[33mRemoval of .o files of $(NAME) ...\033[0m"
 	@rm -f $(OBJ)
 	@rmdir $(OBJ_PATH) 2> /dev/null || true
 	@echo "\033[31mFiles .o deleted\n\033[0m"
 
 fclean: clean
-	@make fclean -C ./libs/libft/
 	@echo "\033[33mRemoval of $(NAME)...\033[0m"
 	@rm -rf $(NAME)
 	@echo "\033[31mBinary $(NAME) deleted\n\033[0m"
