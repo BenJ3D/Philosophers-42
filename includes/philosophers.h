@@ -7,6 +7,7 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <pthread.h>
+#include  <sys/time.h>
 
 /****------------ enum ------------****/
 enum e_error
@@ -25,8 +26,10 @@ enum e_bool
 
 typedef struct s_data
 {
-	int				i;
-	pthread_t	thread1[1024];
+	int					i;
+	pthread_t			tid[1024];
+	pthread_mutex_t		lock;
+
 
 }				t_data;
 

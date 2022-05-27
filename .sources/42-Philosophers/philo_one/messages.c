@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   messages.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncolomer <ncolomer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/10 18:31:46 by ncolomer          #+#    #+#             */
-/*   Updated: 2019/12/13 14:08:39 by ncolomer         ###   ########.fr       */
+/*   Updated: 2022/05/24 17:52:32 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-static char
-	*get_message(int type)
+static char	*get_message(int type)
 {
 	if (type == TYPE_EAT)
 		return (" is eating\n");
@@ -28,8 +27,7 @@ static char
 	return (" died\n");
 }
 
-void
-	display_message(t_philo *philo, int type)
+void	display_message(t_philo *philo, int type)
 {
 	static int	done = 0;
 

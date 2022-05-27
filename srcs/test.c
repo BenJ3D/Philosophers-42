@@ -6,13 +6,13 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 14:36:42 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/05/24 17:35:05 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/05/27 17:39:17 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
 
-void *routine(t_data *data)
+void *routine(void *arg, t_data *data)
 {
 	int y = 0;
 
@@ -26,8 +26,23 @@ void *routine(t_data *data)
 
 int	init_thread(t_data *data)
 {
-	data->i = 1;
-	pthread_create(&data->thread1[data->i], NULL, routine, data);
+	if (pthread_mutex_init(&data->lock, NULL))
+	{
+		printf("\n mutex init failed\n");
+		return (1);
+	}
+	
+	data->i = 0;
+	pthread_create(&data->tid[data->i], NULL, routine, data);
+	data->i++;
+	pthread_create(&data->tid[data->i], NULL, routine, data);
+
+	while(data->i >= 0)
+	{
+		pthread_join(data->tid[i], NULL);
+		data->i--;
+	}
+	pthread_attr_destroy(data->lock);
 	return(0);
 }
 
