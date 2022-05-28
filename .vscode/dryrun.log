@@ -1,11 +1,6 @@
-make --dry-run --always-make --keep-going --print-directory
+make --dry-run --keep-going --print-directory
 make: Entering directory `/Users/bducrocq/projets/42cursus/philosophers42'
-mkdir ./objs/ 2> /dev/null || true
-gcc   -g3 -I./includes/ -o objs/test.o -c srcs/test.c
-mkdir ./objs/ 2> /dev/null || true
-gcc   -g3 -I./includes/ -o objs/main.o -c srcs/main.c
-echo "\033[34mCreation of philosophers ...\033[0m"
-gcc   -g3 ./objs/test.o ./objs/main.o -o philosophers
-echo "\033[32mphilosophers created\n\033[0m"
+make: Nothing to be done for `all'.
+ 
 make: Leaving directory `/Users/bducrocq/projets/42cursus/philosophers42'
  

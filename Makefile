@@ -6,13 +6,13 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/29 16:05:24 by cfatrane          #+#    #+#              #
-#    Updated: 2022/05/24 17:22:29 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/05/28 20:09:32 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Binary 
 
-NAME = philosophers
+NAME = philo
 
 # Path
 
@@ -28,7 +28,11 @@ HEADER = ./includes/philosophers.h
 # Name
 
 SRC_NAME =	test.c					\
-			main.c
+			main.c					\
+			error.c					\
+			parsing.c				\
+			tools.c		\
+			check_arg.c				
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
@@ -42,7 +46,7 @@ OBJ = $(addprefix $(OBJ_PATH), $(OBJ_NAME))
 
 CC = gcc $(CFLAGS) $(SANITIZE) $(LLDBFLAG)
 
-CFLAGS = #-Wall -Wextra -Werror
+CFLAGS =# -Wall -Wextra -Werror
 SANITIZE =# -fsanitize=address
 LLDBFLAG = -g3
 
@@ -64,7 +68,7 @@ endif
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@mkdir $(OBJ_PATH) 2> /dev/null || true
-	@$(CC) $(CPPFLAGS) -o $@ -c $<
+	$(CC) $(CPPFLAGS) -o $@ -c $<
 
 clean:
 	@echo "\033[33mRemoval of .o files of $(NAME) ...\033[0m"

@@ -44,11 +44,12 @@ int main(void)
 			printf("\ncan't create thread :[%s]", strerror(err));
 		i++;
 	}
-
-	pthread_join(tid[0], NULL);
-	pthread_join(tid[1], NULL);
+	while(1)
+	{
+		pthread_join(tid[0], NULL);
+		pthread_join(tid[1], NULL);
+	}
 	pthread_mutex_destroy(&lock);
-
 	return 0;
 }
 
