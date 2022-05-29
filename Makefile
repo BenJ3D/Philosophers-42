@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
+#    By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/29 16:05:24 by cfatrane          #+#    #+#              #
-#    Updated: 2022/05/28 20:09:32 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/05/28 22:42:09 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ all: $(NAME)
 $(NAME): $(OBJ) $(HEADER) ./Makefile
 ifeq ($(shell uname -s), Linux)
 	@echo "\033[34mCreation of $(NAME) on linux ...\033[0m"
-	@$(CC) $(OBJ) -o $@
+	@$(CC) $(OBJ) -o $@ -lpthread
 	@echo "\033[32m$(NAME) created\n\033[0m"
 else
 	@echo "\033[34mCreation of $(NAME) ...\033[0m"

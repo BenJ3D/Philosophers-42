@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/05/28 20:00:19 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/05/29 19:27:04 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	write_error_type(int error_type)
 	if (error_type == ERROR_IS_NOT_INT)
 		ft_putstr_fd("Error\nno int detected", 2);
 	else if (error_type == ERROR_NB_ARGS)
-		ft_putstr_fd("Error\nrequired arguments missing", 2);
+		ft_putstr_fd("Error\nmore arguments", 2);
 	else if (error_type == ERROR_INT_MAXUP || error_type == ERROR_INT_MINDOWN)
 		ft_putstr_fd("Error\nPlease do not exceed int_max and int_min", 2);
 	else if (error_type == ERROR_NB_ARGS)

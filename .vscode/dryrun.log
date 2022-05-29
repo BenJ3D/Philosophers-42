@@ -1,6 +1,5 @@
 make --dry-run --keep-going --print-directory
-make: Entering directory `/Users/bducrocq/projets/42cursus/philosophers42'
-make: Nothing to be done for `all'.
- 
-make: Leaving directory `/Users/bducrocq/projets/42cursus/philosophers42'
+make: Entering directory '/home/ben/projet/Philosophers42'
+make: Nothing to be done for 'all'.
+make: Leaving directory '/home/ben/projet/Philosophers42'
  

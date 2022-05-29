@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/05/28 20:19:06 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/05/29 18:02:55 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,11 @@ int main(int ac, char **argv)
 	pthread_t id;
 	t_data	data;
 	
-	if (ac >= 5 && ac < 7)
+	printf("arg ac = %i\n", ac);
+	if (ac >= 5 && ac <= 6)
 		run_philo(&data, ac, argv);
-	else if (ac <= 7)
-		printf("trop d'args\n");
+	else if (ac > 6)
+		write_error_type(ERROR_NB_ARGS);
 	else
 		printf("rentre des args ducon\n");
 	return (0);
