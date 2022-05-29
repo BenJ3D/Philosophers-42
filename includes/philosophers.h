@@ -49,7 +49,7 @@ typedef struct s_time_rules
 
 typedef struct	s_table
 {
-	void	*a;
+	void		*a;
 }				t_table;
 
 
@@ -58,6 +58,8 @@ typedef struct s_philo
 	pthread_t			tid;
 	int					id;
 	enum e_bool			is_eating;
+	int					lfork;
+	int					*rfork;
 
 }				t_philo;
 

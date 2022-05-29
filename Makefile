@@ -6,7 +6,7 @@
 #    By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/29 16:05:24 by cfatrane          #+#    #+#              #
-#    Updated: 2022/05/28 22:42:09 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/05/30 00:00:54 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ SRC_NAME =	test.c					\
 			main.c					\
 			error.c					\
 			parsing.c				\
-			tools.c		\
+			tools.c					\
 			check_arg.c				
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
@@ -47,7 +47,7 @@ OBJ = $(addprefix $(OBJ_PATH), $(OBJ_NAME))
 CC = gcc $(CFLAGS) $(SANITIZE) $(LLDBFLAG)
 
 CFLAGS =# -Wall -Wextra -Werror
-SANITIZE =# -fsanitize=address
+SANITIZE = -fsanitize=address
 LLDBFLAG = -g3
 
 # Rules
@@ -55,7 +55,7 @@ LLDBFLAG = -g3
 all: $(NAME) 
 
 
-$(NAME): $(OBJ) $(HEADER) ./Makefile
+$(NAME): $(OBJ)
 ifeq ($(shell uname -s), Linux)
 	@echo "\033[34mCreation of $(NAME) on linux ...\033[0m"
 	@$(CC) $(OBJ) -o $@ -lpthread
@@ -66,7 +66,7 @@ else
 	@echo "\033[32m$(NAME) created\n\033[0m"
 endif
 
-$(OBJ_PATH)%.o: $(SRC_PATH)%.c
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c $(HEADER) ./Makefile
 	@mkdir $(OBJ_PATH) 2> /dev/null || true
 	$(CC) $(CPPFLAGS) -o $@ -c $<
 
