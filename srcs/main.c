@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/05/30 00:03:31 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/05/30 14:59:38 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,9 @@
 int	run_philo(t_data *data, int ac, char **argv)
 {
 	parsing_check(data, ac, argv);
-	printf("Check parsing : \nnumber philo = %i\ntime to :\n- die = %i\n- eat = \
-%i\n- sleep = %i\n\
-- must eat = %i\n", \
-	data->number_of_philo, data->time_rules.time_to_die, \
-	data->time_rules.time_to_eat,\
-	data->time_rules.time_to_sleep, data->time_rules.max_philo_must_eat);
+	dbg_print_rules(data); //FIXME:
+	if(!(data->philo = malloc(sizeof(t_philo) * data->number_of_philo + 1)))
+		exit(EXIT_FAILURE);
 	return (0);
 }
 
@@ -36,6 +33,7 @@ int main(int ac, char **argv)
 	else if (ac > 6)
 		write_error_type(ERROR_NB_ARGS);
 	else
-		printf("rentre des args ducon\n");
+		write_error_type(ERROR_MISSING_ARG);
+	free(data.philo);
 	return (0);
 }

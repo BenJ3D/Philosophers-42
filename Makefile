@@ -6,7 +6,7 @@
 #    By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/29 16:05:24 by cfatrane          #+#    #+#              #
-#    Updated: 2022/05/30 00:00:54 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/05/30 14:56:23 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,8 @@ SRC_NAME =	test.c					\
 			error.c					\
 			parsing.c				\
 			tools.c					\
-			check_arg.c				
+			check_arg.c				\
+			debug.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 

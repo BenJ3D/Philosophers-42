@@ -25,6 +25,7 @@ enum	e_error
 {
 	NO_ERROR,
 	ERROR_NB_ARGS,
+	ERROR_MISSING_ARG,
 	ERROR_IS_NOT_INT,
 	ERROR_INT_MAXUP,
 	ERROR_INT_MINDOWN,
@@ -93,5 +94,9 @@ int	ft_putstr_fd(char *s, int fd);
 int		check_is_valid_int(char *str, int i);
 int		check_int_max_or_min(long long nb);
 int		write_error_type(int error_type);
+
+/******-------------- Error management --------------******/
+
+void dbg_print_rules(t_data *data);
 
 #endif

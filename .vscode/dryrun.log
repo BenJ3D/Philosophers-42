@@ -1,19 +1,5 @@
 make --dry-run --keep-going --print-directory
 make: Entering directory '/home/ben/projet/Philosophers42'
-mkdir ./objs/ 2> /dev/null || true
-gcc  -fsanitize=address -g3 -I./includes/ -o objs/test.o -c srcs/test.c
-mkdir ./objs/ 2> /dev/null || true
-gcc  -fsanitize=address -g3 -I./includes/ -o objs/main.o -c srcs/main.c
-mkdir ./objs/ 2> /dev/null || true
-gcc  -fsanitize=address -g3 -I./includes/ -o objs/error.o -c srcs/error.c
-mkdir ./objs/ 2> /dev/null || true
-gcc  -fsanitize=address -g3 -I./includes/ -o objs/parsing.o -c srcs/parsing.c
-mkdir ./objs/ 2> /dev/null || true
-gcc  -fsanitize=address -g3 -I./includes/ -o objs/tools.o -c srcs/tools.c
-mkdir ./objs/ 2> /dev/null || true
-gcc  -fsanitize=address -g3 -I./includes/ -o objs/check_arg.o -c srcs/check_arg.c
-echo "\033[34mCreation of philo on linux ...\033[0m"
-gcc  -fsanitize=address -g3 ./objs/test.o ./objs/main.o ./objs/error.o ./objs/parsing.o ./objs/tools.o ./objs/check_arg.o -o philo -lpthread
-echo "\033[32mphilo created\n\033[0m"
+make: Nothing to be done for 'all'.
 make: Leaving directory '/home/ben/projet/Philosophers42'
  

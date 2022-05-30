@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/05/29 23:50:12 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/05/30 14:58:00 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	write_error_type(int error_type)
 		ft_putstr_fd("Error\nmore arguments\n", 2);
 	else if (error_type == ERROR_INT_MAXUP || error_type == ERROR_INT_MINDOWN)
 		ft_putstr_fd("Error\nPlease do not exceed int_max and int_min\n", 2);
-	else if (error_type == ERROR_NB_ARGS)
+	else if (error_type == ERROR_MISSING_ARG)
 		ft_putstr_fd("Error\nrequired arguments missing\n", 2);
 	if (error_type != NO_ERROR)
 		ft_putstr_fd("Please enter in ms (int):\n\
