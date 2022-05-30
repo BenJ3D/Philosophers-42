@@ -7,9 +7,9 @@
 		{
 			"type": "lldb",
 			"request": "launch",
-			"name": "Debug",
-			"program": "${workspaceFolder}/philosophers",
-			"args": [],
+			"name": "Debug philo",
+			"program": "${workspaceFolder}/philo",
+			"args": ["5" "200" "200" "200"],
 			"cwd": "${workspaceFolder}","cargo"
 			"preLaunchTask": "philo"
 		}

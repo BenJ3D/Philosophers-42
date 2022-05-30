@@ -4,5 +4,5 @@
 		{
 			"taskName": "build PHILO",
 			"command": "make",
-			"isShellCommand": true,
+			"isShellCommand": true
 		}

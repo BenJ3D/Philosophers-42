@@ -61,18 +61,19 @@ typedef struct s_philo
 	enum e_bool			is_eating;
 	int					lfork;
 	int					*rfork;
-
 }				t_philo;
 
 typedef struct s_data
 {
 	int					i;
-	t_philo				*philo;
 	int					number_of_philo;
+	t_philo				*philo;
 	t_time_rules		time_rules;
 	pthread_mutex_t		lock;
 	enum e_error		error;
-
+	struct timeval		current_time;
+	unsigned long		start_sec;
+	unsigned long		start_usec;
 
 	pthread_t			tid[1024]; // FIXME
 
@@ -95,7 +96,7 @@ int		check_is_valid_int(char *str, int i);
 int		check_int_max_or_min(long long nb);
 int		write_error_type(int error_type);
 
-/******-------------- Error management --------------******/
+/******-------------- debug functions  --------------******/
 
 void dbg_print_rules(t_data *data);
 
