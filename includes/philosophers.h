@@ -71,11 +71,21 @@ typedef struct s_philo
 	e_fork				lfork_state;
 }				t_philo;
 
+
+//TODO: faire une struc de voyage qui pointe sur data et sur un philo
+
+typedef struct s_voyager
+{
+
+
+} 			t_voyager;
+
 typedef struct s_data	
 {
 	int					i;
 	int					number_of_philo;
 	t_philo				*philo;
+	t_philo				current_philo; //FIXME:
 	t_time_rules		time_rules;
 	pthread_mutex_t		lock_message;
 	e_error				error;
