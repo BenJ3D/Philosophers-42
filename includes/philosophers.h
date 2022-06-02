@@ -11,17 +11,17 @@
 
 /****------------ enum ------------****/
 
-enum	e_stat
+typedef enum
 {
-	EATING,
-	SLEEP,
-	FORK,
-	THINK,
-	DIED,
-	OVER
-};
+	STATE_EATING,
+	STATE_SLEEP,
+	STATE_FORK,
+	STATE_THINK,
+	STATE_DIED,
+	STATE_OVER
+}	e_state;
 
-enum	e_error
+typedef enum	
 {
 	NO_ERROR,
 	ERROR_NB_ARGS,
@@ -30,13 +30,19 @@ enum	e_error
 	ERROR_INT_MAXUP,
 	ERROR_INT_MINDOWN,
 	ERROR
-};
+}	e_error;
 
-enum	e_bool
+typedef enum	
+{
+	FORK_NON_TAKEN,
+	FORK_TAKEN
+}	e_fork;
+
+typedef enum	
 {
 	FALSE = 0,
 	TRUE = 1
-};
+}	e_bool;
 
 /****----------- struct lst -----------****/
 
@@ -46,7 +52,7 @@ typedef struct s_time_rules
 	int	time_to_eat;
 	int	time_to_sleep;
 	int	max_philo_must_eat;
-}			t_time_rules;
+}				t_time_rules;
 
 typedef struct	s_table
 {
@@ -58,30 +64,42 @@ typedef struct s_philo
 {
 	pthread_t			tid;
 	int					id;
-	enum e_bool			is_eating;
-	int					lfork;
+	e_bool				is_eating; //FIXME: 
 	int					*rfork;
+	int					lfork;
+	pthread_mutex_t		lfork_mutex;
+	e_fork				lfork_state;
 }				t_philo;
 
-typedef struct s_data
+typedef struct s_data	
 {
 	int					i;
 	int					number_of_philo;
 	t_philo				*philo;
 	t_time_rules		time_rules;
-	pthread_mutex_t		lock;
-	enum e_error		error;
+	pthread_mutex_t		lock_message;
+	e_error				error;
 	struct timeval		current_time;
 	unsigned long		start_sec;
 	unsigned long		start_usec;
 
-	pthread_t			tid[1024]; // FIXME
+	pthread_t			tid[2048]; // FIXME
 
 }				t_data;
 
 /******-------------- philo prog --------------******/
 
 int		parsing_check(t_data *data, int ac, char **argv);
+int		print_philo_state_change(e_state state, int pid, pthread_t tid,
+	t_data *data);
+
+/******------------ philo routines ------------******/
+
+int	philo_taken_fork(t_data *data);
+int	philo_eating(t_data *data);
+int	philo_sleeping(t_data *data);
+int	philo_thinking(t_data *data);
+int	philo_died(t_data *data);
 
 
 /******-------------- tools libs --------------******/
@@ -90,14 +108,19 @@ int	ft_atoi_long(const char *src);
 int	ft_isdigit(int c);
 int	ft_putstr_fd(char *s, int fd);
 
-/******-------------- Error management --------------******/
+/******----------- Error management -----------******/
 
 int		check_is_valid_int(char *str, int i);
 int		check_int_max_or_min(long long nb);
 int		write_error_type(int error_type);
 
-/******-------------- debug functions  --------------******/
+/******----------- debug functions ------------******/
 
 void dbg_print_rules(t_data *data);
+
+/******---------- clean exit function -----------******/
+
+void	exit_clean(t_data	*data);
+
 
 #endif

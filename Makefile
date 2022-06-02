@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/29 16:05:24 by cfatrane          #+#    #+#              #
-#    Updated: 2022/05/30 20:59:56 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/06/02 19:11:17 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,8 @@ SRC_NAME =	test.c					\
 			parsing.c				\
 			tools.c					\
 			check_arg.c				\
+			routines.c				\
+			message_philo.c			\
 			debug.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)

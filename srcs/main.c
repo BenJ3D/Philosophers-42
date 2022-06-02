@@ -3,29 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/05/30 21:40:08 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/02 19:12:10 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../includes/philosophers.h"
-void *philo_routine(void *arg)
+
+void	*philo_routine(void *arg)
 {
 	int y;
 	t_data *data;
 
 	data = arg;
-	pthread_mutex_lock(&(data)->lock);
 	y = 0;
 	while (1)
 	{
 		
 		break ;
 	}
-	pthread_mutex_unlock(&(data)->lock);
+	// pthread_mutex_lock(&(data)->lock);
+	// pthread_mutex_unlock(&(data)->lock);
 	return (0);
 }
 
@@ -80,7 +80,7 @@ int	run_philo(t_data *data, int ac, char **argv)
 	if (!(data->philo = malloc(sizeof(t_philo) * data->number_of_philo + 1)))
 		exit(EXIT_FAILURE);
 	init_time(data);
-	pthread_mutex_init(&data->lock, NULL);
+	// pthread_mutex_init(&data->lock, NULL);
 	ini_philo(data);
 	return (0);
 }
