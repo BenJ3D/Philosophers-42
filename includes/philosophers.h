@@ -90,7 +90,7 @@ typedef struct s_data
 /******-------------- philo prog --------------******/
 
 int		parsing_check(t_data *data, int ac, char **argv);
-int		print_philo_state_change(e_state state, int pid, pthread_t tid,
+int		print_pstate_change(e_state state, int pid, pthread_t tid,
 	t_data *data);
 
 /******------------ philo routines ------------******/
@@ -114,13 +114,14 @@ int		check_is_valid_int(char *str, int i);
 int		check_int_max_or_min(long long nb);
 int		write_error_type(int error_type);
 
+/******---------- clean exit function -----------******/
+
+void	exit_clean(t_data	*data);
+
 /******----------- debug functions ------------******/
 
 void dbg_print_rules(t_data *data);
 
-/******---------- clean exit function -----------******/
-
-void	exit_clean(t_data	*data);
 
 
 #endif

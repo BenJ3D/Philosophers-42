@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/02 19:12:10 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/02 20:27:15 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*philo_routine(void *arg)
 	y = 0;
 	while (1)
 	{
-		
+		philo_eating(data);
 		break ;
 	}
 	// pthread_mutex_lock(&(data)->lock);
