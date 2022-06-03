@@ -9,7 +9,7 @@
 			"request": "launch",
 			"name": "Debug philo",
 			"program": "${workspaceFolder}/philo",
-			"args": ["5" "200" "200" "200"],
+			"args": ["4" "200" "200" "200"],
 			"cwd": "${workspaceFolder}","cargo"
 			"preLaunchTask": "philo"
 		}

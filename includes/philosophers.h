@@ -21,7 +21,7 @@ typedef enum
 	STATE_OVER
 }	e_state;
 
-typedef enum	
+typedef enum
 {
 	NO_ERROR,
 	ERROR_NB_ARGS,
@@ -32,7 +32,7 @@ typedef enum
 	ERROR
 }	e_error;
 
-typedef enum	
+typedef enum
 {
 	FORK_NON_TAKEN,
 	FORK_TAKEN
@@ -64,11 +64,12 @@ typedef struct s_philo
 {
 	pthread_t			tid;
 	int					id;
-	e_bool				is_eating; //FIXME: 
+	e_bool				is_died; //FIXME: 
 	int					*rfork;
 	int					lfork;
 	pthread_mutex_t		lfork_mutex;
 	e_fork				lfork_state;
+	e_state				state_philo;
 }				t_philo;
 
 
@@ -78,16 +79,16 @@ typedef struct s_voyager
 {
 
 
-} 			t_voyager;
+}			t_voyager;
 
 typedef struct s_data	
 {
 	int					i;
 	int					number_of_philo;
 	t_philo				*philo;
-	t_philo				current_philo; //FIXME:
+	t_philo				*current_philo; //FIXME:
 	t_time_rules		time_rules;
-	pthread_mutex_t		lock_message;
+	pthread_mutex_t		mtx_lock_message;
 	e_error				error;
 	struct timeval		current_time;
 	unsigned long		start_sec;
