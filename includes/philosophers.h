@@ -9,6 +9,7 @@
 # include <pthread.h>
 # include <sys/time.h>
 
+# define MAX_THREAD 2048
 
 /****------------ enum ------------****/
 
@@ -35,8 +36,8 @@ typedef enum
 
 typedef enum
 {
-	FORK_NON_TAKEN,
-	FORK_TAKEN
+	FORK_NOT_AVAILABLE,
+	FORK_AVAILABLE
 }	e_fork;
 
 typedef enum	
@@ -60,16 +61,16 @@ typedef struct	s_table
 	void		*a;
 }				t_table;
 
-
+typedef struct s_fork
+{
+	e_fork				availability;
+	pthread_mutex_t		mtx_forks;
+}				t_fork;
 typedef struct s_philo
 {
 	pthread_t			tid;
 	int					id;
 	e_bool				is_died; //FIXME: 
-	int					*rfork;
-	int					lfork;
-	pthread_mutex_t		lfork_mutex;
-	e_fork				lfork_state;
 	e_state				state_philo;
 }				t_philo;
 
@@ -77,7 +78,8 @@ typedef struct s_data
 {
 	int					i;
 	int					number_of_philo;
-	t_philo				*philo;
+	t_philo				*philos;
+	t_fork				*forks;
 	t_philo				*current_philo; //FIXME:
 	t_time_rules		time_rules;
 	pthread_mutex_t		mtx_lock_message;
@@ -86,7 +88,7 @@ typedef struct s_data
 	unsigned long		start_sec;
 	unsigned long		start_usec;
 
-	pthread_t			tid[2048]; // FIXME
+	pthread_t			tid[MAX_THREAD]; // FIXME
 
 }				t_data;
 
