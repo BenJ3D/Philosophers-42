@@ -6,26 +6,27 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/03 16:01:15 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/05 13:00:09 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
 
-void	*philo_routine(void *arg)
+void	*philo_routine(t_data *data, int id)
 {
 	int			y;
-	t_data		*data;
-	t_philo		*current;
+	// t_data		*data;
+	static t_philo		*current;
 
-	data = arg;
+	// data = arg;
 	current = data->current_philo;
+	printf("debug philo routine i arg : %i\n", id);
 	y = 0;
 	while (1)
 	{
-		philo_eating(data);
-		philo_sleeping(data);
-		philo_thinking(data);
+		philo_eating(data, id);
+		philo_sleeping(data, id);
+		philo_thinking(data, id);
 	}
 	// pthread_mutex_lock(&(data)->lock);
 	// pthread_mutex_unlock(&(data)->lock);
@@ -42,12 +43,12 @@ int	ini_philo(t_data *data)
 	data->i = 0;
 	while(i < data->number_of_philo)
 	{
-		data->philo->id = y ++;
+		data->philo[i].id = y++;
 		data->current_philo = &data->philo[i]; //FIXME
-		pthread_create(&data->philo[i].tid, NULL, philo_routine, data);
+		pthread_create(&data->philo[i].tid, NULL, philo_routine(data, i), NULL);
 		i++;
 		data->i++;
-		usleep(5); /////////////////////////////// INTERVAL BORN PHIL
+		usleep(150); /////////////////////////////// INTERVAL BORN PHIL
 	}
 	printf("data i = %i\n", data->i);
 	while(1);
@@ -65,16 +66,16 @@ int	init_time(t_data *data)
 	data->start_sec = data->current_time.tv_sec;
 	data->start_usec = data->current_time.tv_usec;
 	gettimeofday(&data->current_time, NULL);
-	printf("timestamp start = : %04ld ms = %03ld\n", data->current_time.tv_sec % 1000,\
+	printf("timestamp start = : %04ld ms = %03i\n", data->current_time.tv_sec % 1000,\
 	data->current_time.tv_usec / 1000);
 	usleep(150000);
 	gettimeofday(&data->current_time, NULL);
-	printf("timestamp start = : %04ld ms = %03ld\n", data->current_time.tv_sec % 1000,\
+	printf("timestamp start = : %04ld ms = %03i\n", data->current_time.tv_sec % 1000,\
 	data->current_time.tv_usec / 1000);
 
 	usleep(150000);
 	gettimeofday(&data->current_time, NULL);
-	printf("timestamp start = : %04ld ms = %03ld\n", data->current_time.tv_sec % 1000,\
+	printf("timestamp start = : %04ld ms = %03i\n", data->current_time.tv_sec % 1000,\
 	data->current_time.tv_usec / 1000);
 	usleep(150000);
 	return (0);

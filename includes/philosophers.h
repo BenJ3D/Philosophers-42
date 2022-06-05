@@ -106,11 +106,11 @@ int		print_pstate_change(e_state state, int pid, pthread_t tid,
 
 /******------------ philo routines ------------******/
 
-int	philo_taken_fork(t_data *data);
-int	philo_eating(t_data *data);
-int	philo_sleeping(t_data *data);
-int	philo_thinking(t_data *data);
-int	philo_died(t_data *data);
+int	philo_taken_fork(t_data *data, int id);
+int	philo_eating(t_data *data, int id);
+int	philo_sleeping(t_data *data, int id);
+int	philo_thinking(t_data *data, int id);
+int	philo_died(t_data *data, int id);
 
 
 /******-------------- tools libs --------------******/
