@@ -6,59 +6,11 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/05 13:00:09 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/05 14:50:42 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
-
-void	*philo_routine(t_data *data, int id)
-{
-	int			y;
-	// t_data		*data;
-	static t_philo		*current;
-
-	// data = arg;
-	current = data->current_philo;
-	printf("debug philo routine i arg : %i\n", id);
-	y = 0;
-	while (1)
-	{
-		philo_eating(data, id);
-		philo_sleeping(data, id);
-		philo_thinking(data, id);
-	}
-	// pthread_mutex_lock(&(data)->lock);
-	// pthread_mutex_unlock(&(data)->lock);
-	return (0);
-}
-
-int	ini_philo(t_data *data)
-{
-	int	i;
-	int	y;
-
-	i = 0;
-	y = 1;
-	data->i = 0;
-	while(i < data->number_of_philo)
-	{
-		data->philo[i].id = y++;
-		data->current_philo = &data->philo[i]; //FIXME
-		pthread_create(&data->philo[i].tid, NULL, philo_routine(data, i), NULL);
-		i++;
-		data->i++;
-		usleep(150); /////////////////////////////// INTERVAL BORN PHIL
-	}
-	printf("data i = %i\n", data->i);
-	while(1);
-	while (data->i >= 0)
-	{
-		pthread_join(data->tid[data->i], NULL);
-		data->i--;
-	}
-	return (0);
-}
 
 int	init_time(t_data *data)
 {
@@ -80,6 +32,55 @@ int	init_time(t_data *data)
 	usleep(150000);
 	return (0);
 }
+
+void	*philo_routine(void *arg)
+{
+	t_voyager	*recup;
+	t_data		*data;
+	int			index_philo;
+
+	recup = arg;
+	data = recup->data;
+	index_philo = recup->index_philo;
+	
+	printf("routine start philo number :  %i\n", index_philo);
+	while (1)
+	{
+		philo_eating(data, index_philo);
+		philo_sleeping(data, index_philo);
+		philo_thinking(data, index_philo);
+	}
+	// pthread_mutex_lock(&(data)->lock);
+	// pthread_mutex_unlock(&(data)->lock);
+	return (0);
+}
+
+int	ini_philo(t_data *data)
+{
+	int	i;
+	t_voyager	voyager;	
+	
+	i = 0;
+	data->i = 0;
+	voyager.data = data;
+	while(i < data->number_of_philo)
+	{
+		voyager.index_philo = i + 1;
+		pthread_create(&data->philo[i].tid, NULL, &philo_routine, &voyager);
+		i++;
+		data->i++;
+		usleep(5); /////////////////////////////// INTERVAL BORN PHIL
+	}
+	printf("data i = %i\n", data->i);
+	while(1);
+	// while (data->i >= 0)
+	// {
+	// 	pthread_join(data->tid[data->i], NULL);
+	// 	data->i--;
+	// }
+	return (0);
+}
+
 
 int	run_philo(t_data *data, int ac, char **argv)
 {

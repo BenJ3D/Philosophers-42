@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:22:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/05 12:58:51 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/05 14:15:04 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int	philo_taken_fork(t_data *data, int id)
 {
 	print_pstate_change(STATE_FORK, id, data->philo->tid, data);
-	sleep(1);
+	usleep(500000);
 	//TODO: prendre les fourchettes droite et gauche
 	return(0);
 }
@@ -25,7 +25,7 @@ int	philo_eating(t_data *data, int id)
 {
 	print_pstate_change(STATE_EATING, id, data->philo->tid, data);
 	//usleep(data->time_rules.time_to_eat);
-	sleep(1);
+	usleep(500000);
 	return(0);
 }
 
@@ -33,7 +33,7 @@ int	philo_sleeping(t_data *data, int id)
 {
 	print_pstate_change(STATE_SLEEP, id, data->philo->tid, data);
 	//usleep(data->time_rules.time_to_sleep);
-	sleep(1);
+	usleep(500000);
 	return(0);
 }
 

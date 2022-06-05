@@ -7,7 +7,8 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <pthread.h>
-# include  <sys/time.h>
+# include <sys/time.h>
+
 
 /****------------ enum ------------****/
 
@@ -72,15 +73,6 @@ typedef struct s_philo
 	e_state				state_philo;
 }				t_philo;
 
-
-//TODO: faire une struc de voyage qui pointe sur data et sur un philo
-
-typedef struct s_voyager
-{
-
-
-}			t_voyager;
-
 typedef struct s_data	
 {
 	int					i;
@@ -98,6 +90,11 @@ typedef struct s_data
 
 }				t_data;
 
+typedef struct s_voyager
+{
+	t_data	*data;
+	int		index_philo;
+}				t_voyager;
 /******-------------- philo prog --------------******/
 
 int		parsing_check(t_data *data, int ac, char **argv);
