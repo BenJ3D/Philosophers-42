@@ -73,7 +73,7 @@ typedef struct s_philo
 	e_bool				is_died; //FIXME: 
 	e_state				state_philo;
 	int					nb_ate;
-	int					last_ate;
+	double				last_ate;
 }				t_philo;
 
 typedef struct s_data	

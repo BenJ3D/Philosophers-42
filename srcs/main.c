@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/08 16:31:37 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/08 22:06:28 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	run_philo(t_data *data, int ac, char **argv)
 	dbg_print_rules(data); //FIXME:
 	if (!(data->philos = malloc(sizeof(t_philo) * data->number_of_philo)))
 		exit(EXIT_FAILURE);
-	if (!(data->forks = malloc(sizeof(t_philo) * data->number_of_philo)))
+	if (!(data->forks = malloc(sizeof(t_fork) * data->number_of_philo)))
 		exit(EXIT_FAILURE);
 	init_time(data);
 	pthread_mutex_init(&data->mtx_lock_message, NULL);

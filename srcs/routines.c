@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routines.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:22:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/08 17:17:25 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/08 21:50:49 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	philo_eating(t_data *data, int id)
 		pthread_mutex_lock(&data->forks[id].mtx_forks);
 		data->forks[id].availability = FORK_NOT_AVAILABLE;
 		print_pstate_change(STATE_FORK, id, data->philos->tid, data, id);
-		data->philos[id - 1].last_ate = get_time();
+		data->philos[id - 1].last_ate = get_time(data);
 		print_pstate_change(STATE_EATING, id, data->philos->tid, data, 0);
 		usleep(data->time_rules.time_to_eat);
 

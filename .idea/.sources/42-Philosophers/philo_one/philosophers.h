@@ -14,6 +14,7 @@
 # define PHILOSOPHERS_H
 
 # include <stdlib.h>
+# include <stdint.h>
 # include <unistd.h>
 # include <pthread.h>
 # include <sys/time.h>
