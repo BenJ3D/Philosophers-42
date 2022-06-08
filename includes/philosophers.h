@@ -72,6 +72,8 @@ typedef struct s_philo
 	int					id;
 	e_bool				is_died; //FIXME: 
 	e_state				state_philo;
+	int					nb_ate;
+	int					last_ate;
 }				t_philo;
 
 typedef struct s_data	
@@ -80,7 +82,7 @@ typedef struct s_data
 	int					number_of_philo;
 	t_philo				*philos;
 	t_fork				*forks;
-	t_philo				*current_philo; //FIXME:
+	//t_philo				*current_philo; //FIXME:
 	t_time_rules		time_rules;
 	pthread_mutex_t		mtx_lock_message;
 	e_error				error;
@@ -104,6 +106,9 @@ int		print_pstate_change(e_state state, int pid, pthread_t tid,
 	t_data *data, int dbgidfork);
 // int		print_pstate_change(e_state state, int pid, pthread_t tid,
 // 	t_data *data);
+int		init_time(t_data *data);
+double	get_time(t_data	*data);
+
 
 /******------------ philo routines ------------******/
 
