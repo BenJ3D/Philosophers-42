@@ -2,6 +2,7 @@ make --dry-run --always-make --keep-going --print-directory
 make: Entering directory `/Users/bducrocq/projets/42cursus/philosophers42'
 mkdir ./objs/ 2> /dev/null || true
 gcc   -g3 -I./includes/ -o objs/test.o -c srcs/test.c
+ 
 mkdir ./objs/ 2> /dev/null || true
 gcc   -g3 -I./includes/ -o objs/main.o -c srcs/main.c
 mkdir ./objs/ 2> /dev/null || true

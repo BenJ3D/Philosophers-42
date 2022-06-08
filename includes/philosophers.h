@@ -101,7 +101,9 @@ typedef struct s_voyager
 
 int		parsing_check(t_data *data, int ac, char **argv);
 int		print_pstate_change(e_state state, int pid, pthread_t tid,
-	t_data *data);
+	t_data *data, int dbgidfork);
+// int		print_pstate_change(e_state state, int pid, pthread_t tid,
+// 	t_data *data);
 
 /******------------ philo routines ------------******/
 

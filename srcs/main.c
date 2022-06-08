@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/05 17:13:37 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/07 16:28:03 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	init_philo(t_data *data)
 		// data->i++;
 		usleep(50); /////////////////////////////// INTERVAL BORN PHIL
 	}
-	printf("data i = %i\n", data->i);
+	//printf("data i = %i\n", data->i);
 	while(1);
 	while (data->i >= 0)
 	{
@@ -110,7 +110,7 @@ int main(int ac, char **argv)
 	pthread_t id;
 	t_data	data;
 	
-	printf("arg ac = %i\n", ac);
+	//printf("arg ac = %i\n", ac);
 	if (ac >= 5 && ac <= 6)
 		run_philo(&data, ac, argv);
 	else if (ac > 6)

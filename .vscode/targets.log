@@ -8,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Tue Jun  7 14:03:27 2022
+# Make data base, printed on Wed Jun  8 14:07:01 2022
 
 # Variables
 
@@ -38,6 +38,7 @@ SHELL = /bin/sh
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
 _ = /usr/bin/make
+ 
 # makefile (from `Makefile', line 52)
 CFLAGS = 
 # makefile (from `Makefile', line 1)
@@ -47,13 +48,15 @@ VSCODE_VERBOSE_LOGGING = true
 # makefile (from `Makefile', line 53)
 SANITIZE = 
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000bjf0002wbh/T/vscode-ipc-470eed18-779c-4658-a310-145d046c121e.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000bjf0002wbh/T/vscode-ipc-df8d236b-ff81-4d64-880b-6a8ab1ba6911.sock
 # environment
 VSCODE_CWD = /
 # environment
-Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.FVbVlh8Ui7/Render
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.GwpL1ORuyS/Render
 # environment
-PATH = /usr/bin:/bin:/usr/sbin:/sbin
+PATH = /Users/bducrocq/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/opt/X11/bin
+# environment
+LSCOLORS = Gxfxcxdxbxegedabagacad
 # makefile (from `Makefile', line 19)
 SRC_PATH = ./srcs/
 # environment
@@ -63,11 +66,13 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.6iQwvAEZWO/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.fhWclk3usy/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
-DISPLAY = /private/tmp/com.apple.launchd.j2RPcaKsrk/org.xquartz:0
+HOMEBREW_TEMP = /tmp/bducrocq/Homebrew/Temp
+# environment
+DISPLAY = /private/tmp/com.apple.launchd.crq7j5n6Mk/org.xquartz:0
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
@@ -87,6 +92,8 @@ LOGNAME = bducrocq
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
+ZSH = /Users/bducrocq/.oh-my-zsh
+# environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
@@ -96,6 +103,8 @@ XPC_FLAGS = 0x0
 MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
+# environment
+HOMEBREW_CACHE = /tmp/bducrocq/Homebrew/Caches
 # environment
 SHLVL = 1
 # makefile (from `Makefile', line 50)
@@ -110,8 +119,8 @@ USER = bducrocq
 .DEFAULT_GOAL := all
 # makefile (from `Makefile', line 15)
 NAME = philo
-# makefile (from `Makefile', line 21)
-OBJ_PATH = ./objs/
+# environment
+LESS = -R
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # default
@@ -131,25 +140,25 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000006.Electron
+XPC_SERVICE_NAME = com.microsoft.VSCode.1316
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
 +F = $(notdir $+)
 # environment
 __CF_USER_TEXT_ENCODING = 0x17170:0x0:0x1
-# environment
-COMMAND_MODE = unix2003
 # default
 MAKEFILES := 
 # automatic
 <F = $(notdir $<)
 # environment
+PAGER = less
+# environment
 LC_ALL = C
 # makefile (from `Makefile', line 25)
 HEADER = ./includes/philosophers.h
-# environment
-SECURITYSESSIONID = 186b5
+# makefile (from `Makefile', line 21)
+OBJ_PATH = ./objs/
 # automatic
 ^F = $(notdir $^)
 # default
@@ -165,9 +174,9 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 26109
+VSCODE_PID = 18502
 # variable set hash-table stats:
-# Load=77/1024=8%, Rehash=0, Collisions=3/112=3%
+# Load=81/1024=8%, Rehash=0, Collisions=6/116=5%
 
 # Pattern-specific Variable Values
 
@@ -202,7 +211,7 @@ all,:
 objs/routines.o: srcs/routines.c includes/philosophers.h Makefile
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `routines'
-#  Last modified 2022-06-07 12:14:22
+#  Last modified 2022-06-07 16:29:26
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -215,7 +224,7 @@ objs/routines.o: srcs/routines.c includes/philosophers.h Makefile
 objs/main.o: srcs/main.c includes/philosophers.h Makefile
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `main'
-#  Last modified 2022-06-07 12:14:22
+#  Last modified 2022-06-07 16:29:25
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -236,7 +245,7 @@ all: philo
 
 philo: objs/test.o objs/main.o objs/error.o objs/parsing.o objs/tools.o objs/check_arg.o objs/routines.o objs/message_philo.o objs/debug.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-06-07 12:14:23
+#  Last modified 2022-06-07 16:29:26
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -250,7 +259,7 @@ philo: objs/test.o objs/main.o objs/error.o objs/parsing.o objs/tools.o objs/che
 objs/error.o: srcs/error.c includes/philosophers.h Makefile
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `error'
-#  Last modified 2022-06-07 12:14:22
+#  Last modified 2022-06-07 16:29:25
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -263,7 +272,7 @@ objs/error.o: srcs/error.c includes/philosophers.h Makefile
 objs/message_philo.o: srcs/message_philo.c includes/philosophers.h Makefile
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `message_philo'
-#  Last modified 2022-06-07 12:14:22
+#  Last modified 2022-06-07 16:29:26
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -281,7 +290,7 @@ objs/message_philo.o: srcs/message_philo.c includes/philosophers.h Makefile
 # Not a target:
 includes/philosophers.h:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-05 16:48:32
+#  Last modified 2022-06-07 16:07:51
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -290,17 +299,16 @@ includes/philosophers.h:
 # Not a target:
 srcs/tools.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-05 15:10:47
+#  Last modified 2022-06-07 14:52:06
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 objs/parsing.o: srcs/parsing.c includes/philosophers.h Makefile
- 
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `parsing'
-#  Last modified 2022-06-07 12:14:22
+#  Last modified 2022-06-07 16:29:25
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -316,6 +324,7 @@ git:
 #  File has not been updated.
 #  commands to execute (from `Makefile', line 95):
 	@git add .
+ 
 	@printf "Message of the commit: " && read msg && git commit -m "$$msg"
 	@git push
 	
@@ -329,7 +338,7 @@ git:
 # Not a target:
 srcs/routines.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-05 17:12:53
+#  Last modified 2022-06-07 16:09:28
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -347,7 +356,7 @@ Makefile:
 # Not a target:
 srcs/main.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-05 17:13:37
+#  Last modified 2022-06-07 16:28:03
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -356,7 +365,7 @@ srcs/main.c:
 objs/debug.o: srcs/debug.c includes/philosophers.h Makefile
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `debug'
-#  Last modified 2022-06-07 12:14:22
+#  Last modified 2022-06-07 16:29:26
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -369,7 +378,7 @@ objs/debug.o: srcs/debug.c includes/philosophers.h Makefile
 objs/test.o: srcs/test.c includes/philosophers.h Makefile
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `test'
-#  Last modified 2022-06-07 12:14:22
+#  Last modified 2022-06-07 16:29:25
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -382,7 +391,7 @@ objs/test.o: srcs/test.c includes/philosophers.h Makefile
 # Not a target:
 srcs/message_philo.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-05 14:51:51
+#  Last modified 2022-06-07 16:27:33
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -391,7 +400,7 @@ srcs/message_philo.c:
 objs/check_arg.o: srcs/check_arg.c includes/philosophers.h Makefile
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `check_arg'
-#  Last modified 2022-06-07 12:14:22
+#  Last modified 2022-06-07 16:29:25
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -404,7 +413,7 @@ objs/check_arg.o: srcs/check_arg.c includes/philosophers.h Makefile
 # Not a target:
 srcs/parsing.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-05 15:23:08
+#  Last modified 2022-06-07 14:52:06
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -438,7 +447,7 @@ fclean: clean
 # Not a target:
 srcs/debug.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-05 15:18:25
+#  Last modified 2022-06-07 14:52:06
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -503,7 +512,7 @@ norme:
 objs/tools.o: srcs/tools.c includes/philosophers.h Makefile
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `tools'
-#  Last modified 2022-06-07 12:14:22
+#  Last modified 2022-06-07 16:29:25
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -526,6 +535,6 @@ objs/tools.o: srcs/tools.c includes/philosophers.h Makefile
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Tue Jun  7 14:03:27 2022
+# Finished Make data base on Wed Jun  8 14:07:01 2022
 
  
