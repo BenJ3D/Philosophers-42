@@ -6,9 +6,8 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
- 
 
-# Make data base, printed on Wed Jun  8 14:07:01 2022
+# Make data base, printed on Wed Jun  8 15:46:08 2022
 
 # Variables
 
@@ -38,7 +37,6 @@ SHELL = /bin/sh
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
 _ = /usr/bin/make
- 
 # makefile (from `Makefile', line 52)
 CFLAGS = 
 # makefile (from `Makefile', line 1)
@@ -48,7 +46,7 @@ VSCODE_VERBOSE_LOGGING = true
 # makefile (from `Makefile', line 53)
 SANITIZE = 
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000bjf0002wbh/T/vscode-ipc-df8d236b-ff81-4d64-880b-6a8ab1ba6911.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000bjf0002wbh/T/vscode-ipc-ebfeb2f6-85dc-4e84-a91b-58613a0edc51.sock
 # environment
 VSCODE_CWD = /
 # environment
@@ -174,7 +172,7 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 18502
+VSCODE_PID = 30899
 # variable set hash-table stats:
 # Load=81/1024=8%, Rehash=0, Collisions=6/116=5%
 
@@ -211,7 +209,7 @@ all,:
 objs/routines.o: srcs/routines.c includes/philosophers.h Makefile
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `routines'
-#  Last modified 2022-06-07 16:29:26
+#  Last modified 2022-06-08 15:43:51
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -224,7 +222,7 @@ objs/routines.o: srcs/routines.c includes/philosophers.h Makefile
 objs/main.o: srcs/main.c includes/philosophers.h Makefile
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `main'
-#  Last modified 2022-06-07 16:29:25
+#  Last modified 2022-06-08 15:10:12
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -245,7 +243,7 @@ all: philo
 
 philo: objs/test.o objs/main.o objs/error.o objs/parsing.o objs/tools.o objs/check_arg.o objs/routines.o objs/message_philo.o objs/debug.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-06-07 16:29:26
+#  Last modified 2022-06-08 15:43:51
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -259,7 +257,7 @@ philo: objs/test.o objs/main.o objs/error.o objs/parsing.o objs/tools.o objs/che
 objs/error.o: srcs/error.c includes/philosophers.h Makefile
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `error'
-#  Last modified 2022-06-07 16:29:25
+#  Last modified 2022-06-08 15:10:12
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -272,7 +270,7 @@ objs/error.o: srcs/error.c includes/philosophers.h Makefile
 objs/message_philo.o: srcs/message_philo.c includes/philosophers.h Makefile
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `message_philo'
-#  Last modified 2022-06-07 16:29:26
+#  Last modified 2022-06-08 15:10:12
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -289,6 +287,7 @@ objs/message_philo.o: srcs/message_philo.c includes/philosophers.h Makefile
 
 # Not a target:
 includes/philosophers.h:
+ 
 #  Implicit rule search has been done.
 #  Last modified 2022-06-07 16:07:51
 #  File has been updated.
@@ -299,7 +298,7 @@ includes/philosophers.h:
 # Not a target:
 srcs/tools.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-07 14:52:06
+#  Last modified 2022-06-08 15:10:20
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -308,7 +307,7 @@ srcs/tools.c:
 objs/parsing.o: srcs/parsing.c includes/philosophers.h Makefile
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `parsing'
-#  Last modified 2022-06-07 16:29:25
+#  Last modified 2022-06-08 15:10:12
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -324,7 +323,6 @@ git:
 #  File has not been updated.
 #  commands to execute (from `Makefile', line 95):
 	@git add .
- 
 	@printf "Message of the commit: " && read msg && git commit -m "$$msg"
 	@git push
 	
@@ -338,7 +336,7 @@ git:
 # Not a target:
 srcs/routines.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-07 16:09:28
+#  Last modified 2022-06-08 15:43:49
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -347,7 +345,7 @@ srcs/routines.c:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-03 15:08:24
+#  Last modified 2022-06-08 15:10:10
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -365,7 +363,7 @@ srcs/main.c:
 objs/debug.o: srcs/debug.c includes/philosophers.h Makefile
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `debug'
-#  Last modified 2022-06-07 16:29:26
+#  Last modified 2022-06-08 15:10:12
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -378,7 +376,7 @@ objs/debug.o: srcs/debug.c includes/philosophers.h Makefile
 objs/test.o: srcs/test.c includes/philosophers.h Makefile
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `test'
-#  Last modified 2022-06-07 16:29:25
+#  Last modified 2022-06-08 15:10:11
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -400,7 +398,7 @@ srcs/message_philo.c:
 objs/check_arg.o: srcs/check_arg.c includes/philosophers.h Makefile
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `check_arg'
-#  Last modified 2022-06-07 16:29:25
+#  Last modified 2022-06-08 15:10:12
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -512,7 +510,7 @@ norme:
 objs/tools.o: srcs/tools.c includes/philosophers.h Makefile
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `tools'
-#  Last modified 2022-06-07 16:29:25
+#  Last modified 2022-06-08 15:10:22
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -535,6 +533,6 @@ objs/tools.o: srcs/tools.c includes/philosophers.h Makefile
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Wed Jun  8 14:07:01 2022
+# Finished Make data base on Wed Jun  8 15:46:08 2022
 
  
