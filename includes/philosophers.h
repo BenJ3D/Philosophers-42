@@ -50,10 +50,11 @@ typedef enum
 
 typedef struct s_time_rules
 {
-	int	time_to_die;
-	int	time_to_eat;
-	int	time_to_sleep;
-	int	max_philo_must_eat;
+	int			time_to_die;
+	int			time_to_eat;
+	int			time_to_sleep;
+	int			max_philo_must_eat;
+	e_bool		ate_max_imposed;
 }				t_time_rules;
 
 typedef struct	s_table
@@ -72,13 +73,14 @@ typedef struct s_philo
 	int					id;
 	e_bool				is_died; //FIXME: 
 	e_state				state_philo;
-	int					nb_ate;
-	double				last_ate;
+	int					ate_nb;
+	e_bool				ate_max;
+	long				last_ate;
 }				t_philo;
 
 typedef struct s_data	
 {
-	int					i;
+	int					id_philo;
 	int					number_of_philo;
 	t_philo				*philos;
 	t_fork				*forks;
@@ -87,57 +89,69 @@ typedef struct s_data
 	pthread_mutex_t		mtx_lock_message;
 	e_error				error;
 	struct timeval		current_time;
-	unsigned long		start_sec;
-	unsigned long		start_usec;
+	long				start_time;
 
 	pthread_t			tid[MAX_THREAD]; // FIXME
 
 }				t_data;
 
-typedef struct s_voyager
-{
-	t_data	*data;
-	int		index_philo;
-}				t_voyager;
+// typedef struct s_voyager
+// {
+// 	t_data				*data;
+// 	int					index_philo;
+// }				t_voyager;
 /******-------------- philo prog --------------******/
 
-int		parsing_check(t_data *data, int ac, char **argv);
-int		print_pstate_change(e_state state, int pid, pthread_t tid,
+int				parsing_check(t_data *data, int ac, char **argv);
+int				print_pstate_change(e_state state, int pid, pthread_t tid,
 	t_data *data, int dbgidfork);
+int				init_philo(t_data *data);
+void			*philo_routine(void *arg);
+int				init_forks(t_data *data);
+int				run_philo(t_data *data, int ac, char **argv);
+
+
+
 // int		print_pstate_change(e_state state, int pid, pthread_t tid,
 // 	t_data *data);
-int		init_time(t_data *data);
-double	get_time(t_data	*data);
+
+
+/******-------------- time function --------------******/
+
+int				time_init(t_data *data);
+void			time_print(t_data *data);
+long			time_get(t_data	*data);
+
 
 
 /******------------ philo routines ------------******/
 
-int	philo_taken_fork(t_data *data, int id);
-int	philo_eating(t_data *data, int id);
-int	philo_sleeping(t_data *data, int id);
-int	philo_thinking(t_data *data, int id);
-int	philo_died(t_data *data, int id);
+int				philo_taken_fork(t_data *data, int id);
+int				philo_eating(t_data *data, int id);
+int				philo_sleeping(t_data *data, int id);
+int				philo_thinking(t_data *data, int id);
+int				philo_died(t_data *data, int id);
 
 
 /******-------------- tools libs --------------******/
 
-int	ft_atoi_long(const char *src);
-int	ft_isdigit(int c);
-int	ft_putstr_fd(char *s, int fd);
+int				ft_atoi_long(const char *src);
+int				ft_isdigit(int c);
+int				ft_putstr_fd(char *s, int fd);
 
 /******----------- Error management -----------******/
 
-int		check_is_valid_int(char *str, int i);
-int		check_int_max_or_min(long long nb);
-int		write_error_type(int error_type);
+int				check_is_valid_int(char *str, int i);
+int				check_int_max_or_min(long long nb);
+int				write_error_type(int error_type);
 
 /******---------- clean exit function -----------******/
 
-void	exit_clean(t_data	*data);
+void			exit_clean(t_data	*data);
 
 /******----------- debug functions ------------******/
 
-void dbg_print_rules(t_data *data);
+void			dbg_print_rules(t_data *data);
 
 
 

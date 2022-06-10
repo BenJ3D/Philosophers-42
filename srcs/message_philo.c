@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:53:48 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/07 16:27:33 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/10 15:29:52 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,19 @@ int		print_pstate_change(e_state state, int pid, pthread_t tid,
 {
 	pthread_mutex_lock(&data->mtx_lock_message);
 	gettimeofday(&data->current_time, NULL);
-	printf("%04ld%03i ms  ", data->current_time.tv_sec % 10000,\
-		data->current_time.tv_usec / 1000);
+	printf("%ld ms  ", time_get(data));
 	if (state == STATE_DIED)
-		printf("%i is died\n", pid);
+		printf("%03i is died\n", pid);
 	else if (state == STATE_EATING)
-		printf("%i is eating\n", pid);
+		printf("%03i is eating\n", pid);
 	else if (state == STATE_FORK)
-		printf("%i has taken a fork %i\n", pid, dbgfork);
+		printf("%03i has taken a fork %i\n", pid, dbgfork);
 	else if (state == STATE_SLEEP)
-		printf("%i is sleeping\n", pid);
+		printf("%03i is sleeping\n", pid);
 	else if (state == STATE_THINK)
-		printf("%i is thinking\n", pid);
+		printf("%03i is thinking\n", pid);
 	else if (state == STATE_OVER)
-		printf("%i over message\n", pid);
+		printf("%03i over message\n", pid);
 	pthread_mutex_unlock(&data->mtx_lock_message);
 	return (0);
 } 
