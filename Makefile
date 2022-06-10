@@ -6,7 +6,7 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/29 16:05:24 by cfatrane          #+#    #+#              #
-#    Updated: 2022/06/08 16:31:17 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/06/10 16:15:41 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ HEADER = ./includes/philosophers.h
 # Name
 
 SRC_NAME =	test.c					\
+			philo.c					\
 			main.c					\
 			error.c					\
 			parsing.c				\

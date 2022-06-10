@@ -104,11 +104,12 @@ typedef struct s_data
 
 int				parsing_check(t_data *data, int ac, char **argv);
 int				print_pstate_change(e_state state, int pid, pthread_t tid,
-	t_data *data, int dbgidfork);
+					t_data *data, int dbgidfork);
 int				init_philo(t_data *data);
 void			*philo_routine(void *arg);
 int				init_forks(t_data *data);
 int				run_philo(t_data *data, int ac, char **argv);
+int				check_last_ate(t_data data, int id);
 
 
 

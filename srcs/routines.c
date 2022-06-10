@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:22:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/10 15:37:22 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/10 16:30:01 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,14 @@ int	last_philo_eating(t_data *data, int id)
 	data->forks[id - 1].availability = FORK_AVAILABLE;
 	pthread_mutex_unlock(&data->forks[0].mtx_forks);
 	pthread_mutex_unlock(&data->forks[id - 1].mtx_forks);
-
+	if (data->time_rules.ate_max_imposed == TRUE)
+		data->philos[id].ate_nb++;
 	return(0);
 }
 
 int	philo_eating(t_data *data, int id)
 {
+	//check_last_ate(data, id);
 	if (id == data->number_of_philo)
 		last_philo_eating(data, id);
 	else
@@ -61,6 +63,8 @@ int	philo_eating(t_data *data, int id)
 		data->forks[id].availability = FORK_AVAILABLE;
 		pthread_mutex_unlock(&data->forks[id - 1].mtx_forks);
 		pthread_mutex_unlock(&data->forks[id].mtx_forks);
+		if(data->time_rules.ate_max_imposed == TRUE)
+			data->philos[id].ate_nb++;
 	}
 	return(0);
 }
