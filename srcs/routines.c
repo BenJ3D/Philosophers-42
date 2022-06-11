@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   routines.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:22:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/10 16:30:01 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/11 09:22:31 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
-
 
 int	philo_taken_fork(t_data *data, int id)
 {
@@ -63,7 +62,7 @@ int	philo_eating(t_data *data, int id)
 		data->forks[id].availability = FORK_AVAILABLE;
 		pthread_mutex_unlock(&data->forks[id - 1].mtx_forks);
 		pthread_mutex_unlock(&data->forks[id].mtx_forks);
-		if(data->time_rules.ate_max_imposed == TRUE)
+		if (data->time_rules.ate_max_imposed == TRUE)
 			data->philos[id].ate_nb++;
 	}
 	return(0);

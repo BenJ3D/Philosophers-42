@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/10 16:34:09 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/11 09:16:57 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,14 @@ void	*philo_routine(void *arg)
 	pthread_mutex_unlock(&data->mtx_lock_message);
 	while (1)
 	{
+		printf("\033[32mDBG PHILO %i, rule max %i  || count = %i\n\033[37m", index_philo, data->time_rules.ate_max_imposed, data->philos[index_philo].ate_max);
 		philo_eating(data, index_philo);
 		if (data->time_rules.ate_max_imposed == TRUE &&\
-		data->philos[index_philo].ate_nb == data->philos[index_philo].ate_max)
+			data->philos[index_philo].ate_nb == data->philos[index_philo].ate_max)
+		{
+			printf("PHILO %i fait un BREAK\n", index_philo);
 			break;
+		}
 		philo_sleeping(data, index_philo);
 		philo_thinking(data, index_philo);
 	}
@@ -55,8 +59,10 @@ int	init_philo(t_data *data)
 			exit(-1);
 		data->philos[i].is_died = FALSE;
 		data->philos[i].ate_nb = 0;
+
 		if (data->time_rules.ate_max_imposed == TRUE)
 			data->philos[i].ate_max = data->time_rules.max_philo_must_eat;
+		printf("\033[31mDBG init philo i = %i\n\t ate nb = %i\n\033[37m", i, data->philos[i].ate_nb);
 		i++;
 		usleep(3); /////////////////////////////// INTERVAL BORN PHILO
 	}

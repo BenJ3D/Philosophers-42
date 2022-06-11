@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   message_philo.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:53:48 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/10 15:29:52 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/10 18:11:16 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ int		print_pstate_change(e_state state, int pid, pthread_t tid,
 	if (state == STATE_DIED)
 		printf("%03i is died\n", pid);
 	else if (state == STATE_EATING)
+	{
 		printf("%03i is eating\n", pid);
+		printf("philo %i a manger %i fois\n", pid, data->philos[pid].ate_nb);
+	}
 	else if (state == STATE_FORK)
 		printf("%03i has taken a fork %i\n", pid, dbgfork);
 	else if (state == STATE_SLEEP)
