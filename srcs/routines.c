@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routines.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:22:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/13 14:55:25 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/13 18:34:13 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	last_philo_eating(t_data *data, int id)
 	pthread_mutex_unlock(&data->forks[0].mtx_forks);
 	pthread_mutex_unlock(&data->forks[id - 1].mtx_forks);
 	if (data->time_rules.ate_max_imposed == TRUE)
-		data->philos[id].ate_nb++;
+		data->philos[id - 1].ate_nb++;
 	return(0);
 }
 
@@ -70,7 +70,7 @@ int	philo_eating(t_data *data, int id)
 		pthread_mutex_unlock(&data->forks[id - 1].mtx_forks);
 		pthread_mutex_unlock(&data->forks[id].mtx_forks);
 		if (data->time_rules.ate_max_imposed == TRUE)
-			data->philos[id].ate_nb++;
+			data->philos[id - 1].ate_nb++;
 	}
 	return(0);
 }

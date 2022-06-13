@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   message_philo.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:53:48 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/13 14:54:16 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/13 17:50:10 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		print_pstate_change(e_state state, int pid, pthread_t tid,
 		printf("\033[31m philo %i a manger %i fois\033[0m\n", pid, data->philos[pid - 1].ate_nb);
 		if (data->philos[pid - 1].ate_nb > data->time_rules.max_philo_must_eat)
 			printf("\033[31m ALERTE PHILO %i A DEPASSER LE NOMBRES DE REPAS %i (max = %i)\n\033[0m", pid, \
-			data->philos[pid- 1].ate_nb, data->time_rules.max_philo_must_eat);
+			data->philos[pid - 1].ate_nb, data->time_rules.max_philo_must_eat);
 			
 		printf("%03i is eating\n", pid);
 	}

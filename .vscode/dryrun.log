@@ -1,29 +1,5 @@
-make --dry-run --always-make --keep-going --print-directory
-make: Entering directory `/Users/bducrocq/projets/42cursus/philosophers42'
-mkdir ./objs/ 2> /dev/null || true
-gcc   -g3 -I./includes/ -o objs/test.o -c srcs/test.c
-mkdir ./objs/ 2> /dev/null || true
-gcc   -g3 -I./includes/ -o objs/philo.o -c srcs/philo.c
-mkdir ./objs/ 2> /dev/null || true
-gcc   -g3 -I./includes/ -o objs/main.o -c srcs/main.c
-mkdir ./objs/ 2> /dev/null || true
-gcc   -g3 -I./includes/ -o objs/error.o -c srcs/error.c
-mkdir ./objs/ 2> /dev/null || true
-gcc   -g3 -I./includes/ -o objs/parsing.o -c srcs/parsing.c
-mkdir ./objs/ 2> /dev/null || true
-gcc   -g3 -I./includes/ -o objs/tools.o -c srcs/tools.c
-mkdir ./objs/ 2> /dev/null || true
-gcc   -g3 -I./includes/ -o objs/check_arg.o -c srcs/check_arg.c
-mkdir ./objs/ 2> /dev/null || true
-gcc   -g3 -I./includes/ -o objs/routines.o -c srcs/routines.c
-mkdir ./objs/ 2> /dev/null || true
-gcc   -g3 -I./includes/ -o objs/message_philo.o -c srcs/message_philo.c
-mkdir ./objs/ 2> /dev/null || true
-gcc   -g3 -I./includes/ -o objs/time.o -c srcs/time.c
-mkdir ./objs/ 2> /dev/null || true
-gcc   -g3 -I./includes/ -o objs/debug.o -c srcs/debug.c
-echo "\033[34mCreation of philo ...\033[0m"
-gcc   -g3 ./objs/test.o ./objs/philo.o ./objs/main.o ./objs/error.o ./objs/parsing.o ./objs/tools.o ./objs/check_arg.o ./objs/routines.o ./objs/message_philo.o ./objs/time.o ./objs/debug.o -o philo
-echo "\033[32mphilo created\n\033[0m"
-make: Leaving directory `/Users/bducrocq/projets/42cursus/philosophers42'
+make --dry-run --keep-going --print-directory
+make: Entering directory '/home/ben/projet/Philosophers42'
+make: Nothing to be done for 'all'.
+make: Leaving directory '/home/ben/projet/Philosophers42'
  

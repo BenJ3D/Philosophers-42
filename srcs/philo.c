@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/13 15:15:12 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/13 17:52:59 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ void	*philo_routine(void *arg)
 	while (1)
 	{
 		printf("\033[32mDBG PHILO %i, max ate is imposed %i  || max philo ate imposed = %i\n\033[37m", index_philo, \
-		data->time_rules.ate_max_imposed, data->philos[index_philo].ate_max);
+			data->time_rules.ate_max_imposed, data->philos[index_philo - 1].ate_max);
 		philo_eating(data, index_philo);
 		if (data->time_rules.ate_max_imposed == TRUE &&\
-			data->philos[index_philo].ate_nb == data->philos[index_philo].ate_max)
+			data->philos[index_philo - 1].ate_nb == data->philos[index_philo - 1].ate_max)
 		{
 			printf("PHILO %i fait a BIEN MANGÉ il part\n", index_philo);
 			break;
@@ -57,7 +57,7 @@ void	*philo_routine(void *arg)
 	// 	usleep(200000);
 	// 	i++;
 	// }
-	// 	printf("philo %i finish, max eat is : %i\n", index_philo, data->philos[index_philo - 1].ate_max);
+		printf("philo %i finish, max eat is : %i\n", index_philo, data->philos[index_philo - 1].ate_max);
 	return (0);
 }
 
@@ -91,9 +91,9 @@ int	init_philo(t_data *data)
 	// {
 	
 	// }
-	while (data->id_philo >= 0)
+	while (data->id_philo > 0)
 	{
-		pthread_join(data->philos[data->id_philo].tid, NULL);
+			pthread_join(data->philos[data->id_philo - 1].tid, NULL);
 		data->id_philo--;
 	}
 	return (0);
