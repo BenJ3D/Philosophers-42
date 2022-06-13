@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:22:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/13 12:21:33 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/13 14:55:25 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@ int	philo_taken_fork(t_data *data, int id)
 	return(0);
 }
 
+/**
+ * @brief 
+ * 
+ * @param data 
+ * @param id index philo
+ * @return int 
+ */
 int	last_philo_eating(t_data *data, int id)
 {
 	pthread_mutex_lock(&data->forks[id - 1].mtx_forks);
