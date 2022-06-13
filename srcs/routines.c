@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routines.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:22:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/11 09:22:31 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/13 12:21:33 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	philo_taken_fork(t_data *data, int id)
 {
 	print_pstate_change(STATE_FORK, id, data->philos->tid, data, id);
-	usleep(50);
+	//usleep(50);
 	return(0);
 }
 

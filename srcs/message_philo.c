@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   message_philo.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:53:48 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/10 18:11:16 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/13 13:48:21 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,12 @@ int		print_pstate_change(e_state state, int pid, pthread_t tid,
 		printf("%03i is died\n", pid);
 	else if (state == STATE_EATING)
 	{
+		if (data->philos[pid].ate_nb > data->time_rules.max_philo_must_eat)
+			printf("\033[31m ALERTE PHILO %i A DEPASSER LE NOMBRES DE REPAS %i (max = %i)\n\033[0m", pid, \
+			data->philos[pid].ate_nb, data->time_rules.max_philo_must_eat);
+			
 		printf("%03i is eating\n", pid);
-		printf("philo %i a manger %i fois\n", pid, data->philos[pid].ate_nb);
+		printf("\033[31m philo %i a manger %i fois\033[0m\n", pid, data->philos[pid].ate_nb);
 	}
 	else if (state == STATE_FORK)
 		printf("%03i has taken a fork %i\n", pid, dbgfork);
