@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:53:48 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/13 14:52:07 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/13 14:54:16 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		print_pstate_change(e_state state, int pid, pthread_t tid,
 		printf("%03i is died\n", pid);
 	else if (state == STATE_EATING)
 	{
-		printf("\033[31mpid message = %i\033[0m\n\n", pid);
+		printf("\033[31mpid message = %i\033[0m\n\n", pid); 
 		printf("\033[31m philo %i a manger %i fois\033[0m\n", pid, data->philos[pid - 1].ate_nb);
 		if (data->philos[pid - 1].ate_nb > data->time_rules.max_philo_must_eat)
 			printf("\033[31m ALERTE PHILO %i A DEPASSER LE NOMBRES DE REPAS %i (max = %i)\n\033[0m", pid, \
