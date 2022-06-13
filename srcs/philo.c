@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/13 13:52:40 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/13 14:45:36 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ void	*philo_routine(void *arg)
 		if (data->time_rules.ate_max_imposed == TRUE &&\
 			data->philos[index_philo].ate_nb == data->philos[index_philo].ate_max)
 		{
-			printf("PHILO %i fait a BIEN MANGÉ\n", index_philo);
+			printf("PHILO %i fait a BIEN MANGÉ il part\n", index_philo);
 			break;
 		}
 		philo_sleeping(data, index_philo);
 		philo_thinking(data, index_philo);
 	}
-	/////////////////////////////////DBG TEST ///////////////////////////////////////
+	///////////////////////////////// DBG TEST ///////////////////////////////////////
 	// int i = 0;
 	// while (i != 5)
 	// {

@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:53:48 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/13 13:48:21 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/13 14:52:07 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
  * @brief print in the standart output a message when a philo changes state
  * 
  * @param state state philo
- * @param pid philo id
+ * @param pid philo index
  * @param tid thread id
  * @param data 
  * @return int 
@@ -31,12 +31,13 @@ int		print_pstate_change(e_state state, int pid, pthread_t tid,
 		printf("%03i is died\n", pid);
 	else if (state == STATE_EATING)
 	{
-		if (data->philos[pid].ate_nb > data->time_rules.max_philo_must_eat)
+		printf("\033[31mpid message = %i\033[0m\n\n", pid);
+		printf("\033[31m philo %i a manger %i fois\033[0m\n", pid, data->philos[pid - 1].ate_nb);
+		if (data->philos[pid - 1].ate_nb > data->time_rules.max_philo_must_eat)
 			printf("\033[31m ALERTE PHILO %i A DEPASSER LE NOMBRES DE REPAS %i (max = %i)\n\033[0m", pid, \
-			data->philos[pid].ate_nb, data->time_rules.max_philo_must_eat);
+			data->philos[pid- 1].ate_nb, data->time_rules.max_philo_must_eat);
 			
 		printf("%03i is eating\n", pid);
-		printf("\033[31m philo %i a manger %i fois\033[0m\n", pid, data->philos[pid].ate_nb);
 	}
 	else if (state == STATE_FORK)
 		printf("%03i has taken a fork %i\n", pid, dbgfork);
