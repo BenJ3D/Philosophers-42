@@ -1,6 +1,5 @@
 #ifndef PHILOSOPHERS_H
 # define PHILOSOPHERS_H
-
 # include <stdio.h>
 # include <stdlib.h>
 # include <limits.h>
@@ -10,6 +9,7 @@
 # include <sys/time.h>
 
 # define MAX_THREAD 2048
+# define DBG_PRINT 0
 
 /****------------ enum ------------****/
 
@@ -57,10 +57,10 @@ typedef struct s_time_rules
 	e_bool		ate_max_imposed;
 }				t_time_rules;
 
-typedef struct	s_table
+typedef struct	s_debug_mod
 {
-	void		*a;
-}				t_table;
+	e_bool		debug;
+}				t_debug_mod;
 
 typedef struct s_fork
 {
@@ -95,11 +95,6 @@ typedef struct s_data
 
 }				t_data;
 
-// typedef struct s_voyager
-// {
-// 	t_data				*data;
-// 	int					index_philo;
-// }				t_voyager;
 /******-------------- philo prog --------------******/
 
 int				parsing_check(t_data *data, int ac, char **argv);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/14 00:49:27 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/14 15:45:15 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,22 @@ void	*philo_routine(void *arg)
 	index_philo = data->id_philo;
 	pthread_mutex_lock(&data->mtx_lock_message);
 	//gettimeofday(&data->current_time, NULL);
-	printf("%ld ms  ", time_get(data));
-	printf("philo %i is born\n", index_philo); //FIXME:
+	//printf("%ld ms  ", time_get(data));
+	if (DBG_PRINT == 1)
+		printf("philo %i is born\n", index_philo); //FIXME:
 	pthread_mutex_unlock(&data->mtx_lock_message);
 	while (1)
 	{
-		printf("\033[32mDBG PHILO %i, max ate is imposed %i  || max philo ate imposed = %i\n\033[37m", index_philo,
-			   data->time_rules.ate_max_imposed, data->philos[index_philo - 1].ate_max); // FIXME:
+		if (DBG_PRINT == 1)
+			printf("\033[32mDBG PHILO %i, max ate is imposed %i  || max philo ate imposed = %i\n\033[37m", index_philo,
+				data->time_rules.ate_max_imposed, data->philos[index_philo - 1].ate_max); // FIXME:
 		// data->philos[index_philo - 1].last_ate = time_get(data); // ICIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 		philo_eating(data, index_philo);
 		if (data->time_rules.ate_max_imposed == TRUE &&\
 			data->philos[index_philo - 1].ate_nb == data->philos[index_philo - 1].ate_max)
 		{
-			printf("PHILO %i fait a BIEN MANGÉ il part\n", index_philo); // FIXME:
+			if (DBG_PRINT == 1)
+				printf("PHILO %i fait a BIEN MANGÉ il part\n", index_philo); // FIXME:
 			break;
 		}
 		philo_sleeping(data, index_philo);
@@ -58,7 +61,7 @@ void	*philo_routine(void *arg)
 	// 	usleep(200000);
 	// 	i++;
 	// }
-		printf("philo %i finish, max eat is : %i\n", index_philo, data->philos[index_philo - 1].ate_max);
+	printf("\033[31mphilo %i finish, max eat is : %i\033[0m\n", index_philo, data->philos[index_philo - 1].ate_max);
 	return (0);
 }
 
@@ -79,23 +82,15 @@ int	init_philo(t_data *data)
 		if (data->time_rules.ate_max_imposed == TRUE)
 			data->philos[i].ate_max = data->time_rules.max_philo_must_eat;
 		pthread_mutex_lock(&data->mtx_lock_message);
-		printf("\033[31mDBG init philo i = %i\n\t ate nb = %i\n\033[37m", i, data->philos[i].ate_nb);
+		if (DBG_PRINT == 1)
+			printf("\033[31mDBG init philo i = %i\n\t ate nb = %i\n\033[37m", i, data->philos[i].ate_nb);
 		pthread_mutex_unlock(&data->mtx_lock_message);
 		i++;
 		usleep(5); /////////////////////////////// INTERVAL BORN PHILO
 	}
-	// data->philos[0].ate_max = 4;
-	// data->philos[1].ate_max = 4;
-	// data->philos[2].ate_max = 4;
-	// data->philos[3].ate_max = 4;
-	
-	// while(1)
-	// {
-	
-	// }
 	while (data->id_philo > 0)
 	{
-			pthread_join(data->philos[data->id_philo - 1].tid, NULL);
+		pthread_join(data->philos[data->id_philo - 1].tid, NULL);
 		data->id_philo--;
 	}
 	return (0);
@@ -118,7 +113,7 @@ int	run_philo(t_data *data, int ac, char **argv)
 {
 	parsing_check(data, ac, argv);
 	dbg_print_rules(data); //FIXME:
-	if (ac == 6)
+	if (ac == 6 && (ft_atoi_long(argv[5]) > 0))
 		data->time_rules.ate_max_imposed = TRUE;
 	else
 		data->time_rules.ate_max_imposed = FALSE;

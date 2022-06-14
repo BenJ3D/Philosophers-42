@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routines.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:22:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/14 00:33:07 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/14 16:24:23 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,23 @@ int	last_philo_eating(t_data *data, int id)
 	return(0);
 }
 
+// void print_last_eat(t_data *data,  )
+
 int	philo_eating(t_data *data, int id)
 {
+	long	res_last_ate;
+	
+	pthread_mutex_lock(&data->mtx_lock_message);
+	res_last_ate = ((data->philos[id - 1].last_ate - time_get(data)) * -1);
+	printf("res last ate = %li\n", res_last_ate);
+	pthread_mutex_unlock(&data->mtx_lock_message);
+	if((res_last_ate * 1000) > data->time_rules.time_to_die)
 	{
+		pthread_mutex_lock(&data->mtx_lock_message);
+		printf("\033[31mIL EST MORT !!!!!!!!!!!!!!!!!!!!!!\033[0m\n");
 		print_pstate_change(STATE_DIED, id, data->philos->tid, data, 0);
-		
-		
+		pthread_mutex_unlock(&data->mtx_lock_message);
+		return (-1);
 	}
 	if (id == data->number_of_philo)
 		last_philo_eating(data, id);
@@ -63,7 +74,7 @@ int	philo_eating(t_data *data, int id)
 		pthread_mutex_lock(&data->forks[id].mtx_forks);
 		data->forks[id].availability = FORK_NOT_AVAILABLE;
 		print_pstate_change(STATE_FORK, id, data->philos->tid, data, id);
-		data->philos[id - 1].last_ate = time_get(data); // ET ICIIIIIIIIIIIIIIIIIIIIIIIIIIII
+				data->philos[id - 1].last_ate = time_get(data); // ET ICIIIIIIIIIIIIIIIIIIIIIIIIIIII
 		print_pstate_change(STATE_EATING, id, data->philos->tid, data, 0);
 		usleep(data->time_rules.time_to_eat);
 		data->forks[id - 1].availability = FORK_AVAILABLE;
