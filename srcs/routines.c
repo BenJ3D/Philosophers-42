@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:22:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/14 16:24:23 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/14 17:09:03 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int	philo_eating(t_data *data, int id)
 		pthread_mutex_lock(&data->mtx_lock_message);
 		printf("\033[31mIL EST MORT !!!!!!!!!!!!!!!!!!!!!!\033[0m\n");
 		print_pstate_change(STATE_DIED, id, data->philos->tid, data, 0);
+		exit_clean(data);
 		pthread_mutex_unlock(&data->mtx_lock_message);
 		return (-1);
 	}

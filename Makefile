@@ -6,7 +6,7 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/29 16:05:24 by cfatrane          #+#    #+#              #
-#    Updated: 2022/06/14 12:47:22 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/06/14 17:10:13 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRC_NAME =	test.c					\
 			routines.c				\
 			message_philo.c			\
 			time.c					\
+			exit.c					\
 			debug.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)

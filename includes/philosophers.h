@@ -105,6 +105,7 @@ void			*philo_routine(void *arg);
 int				init_forks(t_data *data);
 int				run_philo(t_data *data, int ac, char **argv);
 int				check_last_ate(t_data data, int id);
+void			exit_clean(t_data *data);
 
 
 
