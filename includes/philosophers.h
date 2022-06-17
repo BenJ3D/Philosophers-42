@@ -84,9 +84,10 @@ typedef struct s_data
 	int					number_of_philo;
 	t_philo				*philos;
 	t_fork				*forks;
-	//t_philo				*current_philo; //FIXME:
+	//t_philo			*current_philo; //FIXME:
 	t_time_rules		time_rules;
 	pthread_mutex_t		mtx_lock_message;
+	e_bool				somebody_is_dead;
 	e_error				error;
 	struct timeval		current_time;
 	long				start_time;
@@ -105,7 +106,7 @@ void			*philo_routine(void *arg);
 int				init_forks(t_data *data);
 int				run_philo(t_data *data, int ac, char **argv);
 int				check_last_ate(t_data data, int id);
-void			exit_clean(t_data *data);
+int				exit_clean(t_data *data);
 
 
 
@@ -144,7 +145,7 @@ int				write_error_type(int error_type);
 
 /******---------- clean exit function -----------******/
 
-void			exit_clean(t_data	*data);
+int				exit_clean(t_data *data);
 
 /******----------- debug functions ------------******/
 

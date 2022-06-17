@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/17 11:47:20 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/17 17:18:36 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,20 @@ void	*philo_routine(void *arg)
 			printf("\033[32mDBG PHILO %i, max ate is imposed %i  || max philo ate imposed = %i\n\033[37m", index_philo,
 				data->time_rules.ate_max_imposed, data->philos[index_philo - 1].ate_max); // FIXME:
 		// data->philos[index_philo - 1].last_ate = time_get(data); // ICIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
-		// if ("UN MORT")//TODO: 
+		if (data->somebody_is_dead == TRUE)
 			break ;
-		philo_eating(data, index_philo);
-		if (data->time_rules.ate_max_imposed == TRUE &&\
-			data->philos[index_philo - 1].ate_nb == data->philos[index_philo - 1].ate_max)
-		{
-			if (DBG_PRINT == 1)
-				printf("PHILO %i fait a BIEN MANGÉ il part\n", index_philo); // FIXME:
-			break;
-		}
+		if (philo_eating(data, index_philo))
+			break ;
+		if (data->time_rules.ate_max_imposed == TRUE \
+		&& data->philos[index_philo - 1].ate_nb \
+		== data->philos[index_philo - 1].ate_max)
+			break ;
+
+		if (data->somebody_is_dead == TRUE)
+			break ;
 		philo_sleeping(data, index_philo);
+		if (data->somebody_is_dead == TRUE)
+			break ;
 		philo_thinking(data, index_philo);
 	}
 	///////////////////////////////// DBG TEST ///////////////////////////////////////
@@ -89,13 +92,14 @@ int	init_philo(t_data *data)
 			printf("\033[31mDBG init philo i = %i\n\t ate nb = %i\n\033[37m", i, data->philos[i].ate_nb);
 		pthread_mutex_unlock(&data->mtx_lock_message);
 		i++;
-		usleep(5); /////////////////////////////// INTERVAL BORN PHILO
+		usleep(50); /////////////////////////////// INTERVAL BORN PHILO
 	}
 	while (data->id_philo > 0)
 	{
 		pthread_join(data->philos[data->id_philo - 1].tid, NULL);
 		data->id_philo--;
 	}
+	printf("COUCOU DE philo.c:102\n");
 	return (0);
 }
 
@@ -116,7 +120,7 @@ int	run_philo(t_data *data, int ac, char **argv)
 {
 	parsing_check(data, ac, argv);
 	dbg_print_rules(data); //FIXME:
-	if (ac == 6 && (ft_atoi_long(argv[5]) > 0));
+	if (ac == 6 && (ft_atoi_long(argv[5]) > 0))
 		data->time_rules.ate_max_imposed = TRUE;
 	else
 		data->time_rules.ate_max_imposed = FALSE;
@@ -127,6 +131,7 @@ int	run_philo(t_data *data, int ac, char **argv)
 	time_init(data);
 	pthread_mutex_init(&data->mtx_lock_message, NULL);
 	init_forks(data);
+	data->somebody_is_dead = FALSE;
 	init_philo(data);
 	return (0);
 }
