@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/14 15:45:15 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/17 11:47:20 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void	*philo_routine(void *arg)
 			printf("\033[32mDBG PHILO %i, max ate is imposed %i  || max philo ate imposed = %i\n\033[37m", index_philo,
 				data->time_rules.ate_max_imposed, data->philos[index_philo - 1].ate_max); // FIXME:
 		// data->philos[index_philo - 1].last_ate = time_get(data); // ICIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+		// if ("UN MORT")//TODO: 
+			break ;
 		philo_eating(data, index_philo);
 		if (data->time_rules.ate_max_imposed == TRUE &&\
 			data->philos[index_philo - 1].ate_nb == data->philos[index_philo - 1].ate_max)
@@ -61,6 +63,7 @@ void	*philo_routine(void *arg)
 	// 	usleep(200000);
 	// 	i++;
 	// }
+	//if ("PAS UN MORT") //TODO:
 	printf("\033[31mphilo %i finish, max eat is : %i\033[0m\n", index_philo, data->philos[index_philo - 1].ate_max);
 	return (0);
 }
@@ -75,7 +78,7 @@ int	init_philo(t_data *data)
 	{
 		data->id_philo++;
 		if(pthread_create(&data->philos[i].tid, NULL, &philo_routine, data))
-			exit(-1);
+			return (EXIT_FAILURE);
 		data->philos[i].is_died = FALSE;
 		data->philos[i].ate_nb = 0;
 		data->philos[i].last_ate = time_get(data);
@@ -113,14 +116,14 @@ int	run_philo(t_data *data, int ac, char **argv)
 {
 	parsing_check(data, ac, argv);
 	dbg_print_rules(data); //FIXME:
-	if (ac == 6 && (ft_atoi_long(argv[5]) > 0))
+	if (ac == 6 && (ft_atoi_long(argv[5]) > 0));
 		data->time_rules.ate_max_imposed = TRUE;
 	else
 		data->time_rules.ate_max_imposed = FALSE;
 	if (!(data->philos = malloc(sizeof(t_philo) * data->number_of_philo)))
-		exit(EXIT_FAILURE);
+		return (EXIT_FAILURE);
 	if (!(data->forks = malloc(sizeof(t_fork) * data->number_of_philo)))
-		exit(EXIT_FAILURE);
+		return (EXIT_FAILURE);
 	time_init(data);
 	pthread_mutex_init(&data->mtx_lock_message, NULL);
 	init_forks(data);
