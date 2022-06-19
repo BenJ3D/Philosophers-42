@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/17 17:18:36 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/19 16:45:46 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	*philo_routine(void *arg)
 
 	data = arg;
 	index_philo = data->id_philo;
+	// pthread_mutex_lock(&data->mtx_somebody_is_dead);
 	pthread_mutex_lock(&data->mtx_lock_message);
 	//gettimeofday(&data->current_time, NULL);
 	//printf("%ld ms  ", time_get(data));
@@ -67,6 +68,7 @@ void	*philo_routine(void *arg)
 	// 	i++;
 	// }
 	//if ("PAS UN MORT") //TODO:
+	// pthread_mutex_unlock(&data->mtx_somebody_is_dead);
 	printf("\033[31mphilo %i finish, max eat is : %i\033[0m\n", index_philo, data->philos[index_philo - 1].ate_max);
 	return (0);
 }
@@ -92,13 +94,20 @@ int	init_philo(t_data *data)
 			printf("\033[31mDBG init philo i = %i\n\t ate nb = %i\n\033[37m", i, data->philos[i].ate_nb);
 		pthread_mutex_unlock(&data->mtx_lock_message);
 		i++;
-		usleep(50); /////////////////////////////// INTERVAL BORN PHILO
+		usleep(5); /////////////////////////////// INTERVAL BORN PHILO
 	}
 	while (data->id_philo > 0)
 	{
 		pthread_join(data->philos[data->id_philo - 1].tid, NULL);
 		data->id_philo--;
 	}
+	// while (data->id_philo > 0)
+	// {
+	// 	pthread_detach(data->philos[data->id_philo - 1].tid);
+	// 	data->id_philo--;
+	// }
+	// pthread_mutex_lock(&data->mtx_somebody_is_dead);
+	// pthread_mutex_unlock(&data->mtx_somebody_is_dead);
 	printf("COUCOU DE philo.c:102\n");
 	return (0);
 }
@@ -130,6 +139,7 @@ int	run_philo(t_data *data, int ac, char **argv)
 		return (EXIT_FAILURE);
 	time_init(data);
 	pthread_mutex_init(&data->mtx_lock_message, NULL);
+	// pthread_mutex_init(&data->mtx_somebody_is_dead, NULL);
 	init_forks(data);
 	data->somebody_is_dead = FALSE;
 	init_philo(data);

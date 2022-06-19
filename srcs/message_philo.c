@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:53:48 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/14 16:14:06 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/19 17:51:09 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ int		print_pstate_change(e_state state, int pid, pthread_t tid,
 {
 	pthread_mutex_lock(&data->mtx_lock_message);
 	gettimeofday(&data->current_time, NULL);
+	if (data->somebody_is_dead == TRUE)
+	{
+		pthread_mutex_lock(&data->mtx_lock_message);
+		return (EXIT_FAILURE);
+	}
 	printf("%ld ms  ", time_get(data));
 	if (state == STATE_DIED)
 		printf("\033[31m%03i is died (msg_philo:31)\033[0m\n", pid);

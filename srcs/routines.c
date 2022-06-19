@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:22:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/17 17:20:02 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/19 18:36:56 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	philo_taken_fork(t_data *data, int id)
 {
-	print_pstate_change(STATE_FORK, id, data->philos->tid, data, id);
+	if (print_pstate_change(STATE_FORK, id, data->philos->tid, data, id))
+		write (1, "YESS\n", 5);
 	//usleep(50);
 	return(0);
 }
@@ -30,12 +31,15 @@ int	last_philo_eating(t_data *data, int id)
 {
 	pthread_mutex_lock(&data->forks[id - 1].mtx_forks);
 	data->forks[id - 1].availability = FORK_NOT_AVAILABLE;
-	print_pstate_change(STATE_FORK, id, data->philos->tid, data, id - 1);
+	if (print_pstate_change(STATE_FORK, id, data->philos->tid, data, id - 1))
+		return (EXIT_FAILURE);
 	pthread_mutex_lock(&data->forks[0].mtx_forks);
 	data->forks[id].availability = FORK_NOT_AVAILABLE;
-	print_pstate_change(STATE_FORK, id, data->philos->tid, data, 0);
-	data->philos[id - 1].last_ate = time_get(data); // ET ICIIIIIIIIIIIIIIIIIIIIIIIIIIII
-	print_pstate_change(STATE_EATING, id, data->philos->tid, data, 0);
+	if (print_pstate_change(STATE_FORK, id, data->philos->tid, data, 0))
+		return (EXIT_FAILURE);
+	data->philos[id - 1].last_ate = time_get(data); // ET ICIIIIIIIIIIIIIIIIIIII
+	if (print_pstate_change(STATE_EATING, id, data->philos->tid, data, 0))
+		return (EXIT_FAILURE);
 	usleep(data->time_rules.time_to_eat);
 	data->forks[0].availability = FORK_AVAILABLE;
 	data->forks[id - 1].availability = FORK_AVAILABLE;
@@ -60,26 +64,33 @@ int	philo_eating(t_data *data, int id)
 		return (EXIT_FAILURE);
 	if ((res_last_ate * 1000) > data->time_rules.time_to_die)
 	{
-		data->somebody_is_dead = TRUE;
 		pthread_mutex_lock(&data->mtx_lock_message);
+		//pthread_mutex_destroy(&data->mtx_lock_message);
 		printf("\033[31mIL EST MORT !!!!!!!!!!!!!!!!!!!!!!\033[0m\n");
 		print_pstate_change(STATE_DIED, id, data->philos->tid, data, 0);
-		exit_clean(data);
+		data->somebody_is_dead = TRUE;
 		pthread_mutex_unlock(&data->mtx_lock_message);
-		return (EXIT_FAILURE);
+		// exit_clean(data);
+		return (EXIT_FAILURE);  
 	}
 	if (id == data->number_of_philo)
-		last_philo_eating(data, id);
+	{
+		if (last_philo_eating(data, id))
+			return (EXIT_FAILURE);
+	}
 	else
 	{
 		pthread_mutex_lock(&data->forks[id - 1].mtx_forks);
 		data->forks[id - 1].availability = FORK_NOT_AVAILABLE;
-		print_pstate_change(STATE_FORK, id, data->philos->tid, data, id - 1);
+		if (print_pstate_change(STATE_FORK, id, data->philos->tid, data, id - 1))
+			return (EXIT_FAILURE);
 		pthread_mutex_lock(&data->forks[id].mtx_forks);
 		data->forks[id].availability = FORK_NOT_AVAILABLE;
-		print_pstate_change(STATE_FORK, id, data->philos->tid, data, id);
-				data->philos[id - 1].last_ate = time_get(data); // ET ICIIIIIIIIIIIIIIIIIIIIIIIIIIII
-		print_pstate_change(STATE_EATING, id, data->philos->tid, data, 0);
+		if (print_pstate_change(STATE_FORK, id, data->philos->tid, data, id))
+			return (EXIT_FAILURE);
+		data->philos[id - 1].last_ate = time_get(data); // ET ICIIIIIIIIIIIIIIIIIIIIIIIIIIII
+		if (print_pstate_change(STATE_EATING, id, data->philos->tid, data, 0))
+			return (EXIT_FAILURE);
 		usleep(data->time_rules.time_to_eat);
 		data->forks[id - 1].availability = FORK_AVAILABLE;
 		data->forks[id].availability = FORK_AVAILABLE;
@@ -92,7 +103,7 @@ int	philo_eating(t_data *data, int id)
 	{
 		pthread_mutex_destroy(&data->mtx_lock_message);
 	}
-	return(0);
+	return (0);
 }
 
 int	philo_sleeping(t_data *data, int id)

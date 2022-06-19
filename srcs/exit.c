@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 19:21:24 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/17 14:32:54 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/19 17:23:36 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	free_all(t_data *data)
 {
+	printf("Coucou je suis freeall dans exit.c:28\n");
 	int	i;
 
 	i = 0;
@@ -22,10 +23,10 @@ int	free_all(t_data *data)
 		pthread_mutex_destroy(&data->forks[i].mtx_forks);
 		i++;
 	}
-	pthread_mutex_destroy(&data->mtx_lock_message);
+	// pthread_mutex_destroy(&data->mtx_lock_message);
 	free(data->philos);
 	free(data->forks);
-	return(0);
+	return (0);
 }
 
 int	exit_clean(t_data *data)
