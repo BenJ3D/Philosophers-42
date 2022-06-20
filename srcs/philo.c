@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/19 16:45:46 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/20 14:29:58 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,31 +25,18 @@ void	*philo_routine(void *arg)
 
 	data = arg;
 	index_philo = data->id_philo;
-	// pthread_mutex_lock(&data->mtx_somebody_is_dead);
-	pthread_mutex_lock(&data->mtx_lock_message);
-	//gettimeofday(&data->current_time, NULL);
-	//printf("%ld ms  ", time_get(data));
-	if (DBG_PRINT == 1)
-		printf("philo %i is born\n", index_philo); //FIXME:
-	pthread_mutex_unlock(&data->mtx_lock_message);
 	while (1)
 	{
-		if (DBG_PRINT == 1)
-			printf("\033[32mDBG PHILO %i, max ate is imposed %i  || max philo ate imposed = %i\n\033[37m", index_philo,
-				data->time_rules.ate_max_imposed, data->philos[index_philo - 1].ate_max); // FIXME:
-		// data->philos[index_philo - 1].last_ate = time_get(data); // ICIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 		if (data->somebody_is_dead == TRUE)
 			break ;
-		if (philo_eating(data, index_philo))
+		if (philo_eating(data, index_philo) == EXIT_FAILURE)
 			break ;
 		if (data->time_rules.ate_max_imposed == TRUE \
 		&& data->philos[index_philo - 1].ate_nb \
 		== data->philos[index_philo - 1].ate_max)
 			break ;
-
-		if (data->somebody_is_dead == TRUE)
-			break ;
-		philo_sleeping(data, index_philo);
+		if (data->somebody_is_dead == FALSE)
+			philo_sleeping(data, index_philo);
 		if (data->somebody_is_dead == TRUE)
 			break ;
 		philo_thinking(data, index_philo);
