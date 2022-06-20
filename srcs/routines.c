@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:22:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/20 14:31:47 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/20 14:36:12 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,11 @@ int	philo_eating(t_data *data, int id)
 	if ((res_last_ate * 1000) > data->time_rules.time_to_die)
 	{
 		pthread_mutex_lock(&data->mtx_lock_message);
-		//pthread_mutex_destroy(&data->mtx_lock_message);
-		printf("\033[31mIL EST MORT 1!!!!!!!!!!!!!!!!!!!!!!\033[0m\n");
-		//print_pstate_change(STATE_DIED, id, data->philos->tid, data, 0);
-		printf("\033[31mIL EST MORT 2!!!!!!!!!!!!!!!!!!!!!!\033[0m\n");
+		//printf("\033[31mIL EST MORT 1!!!!!!!!!!!!!!!!!!!!!!\033[0m\n");
+		printf("\033[31m%03i is died (msg_philo:39)\033[0m\n", id);
+		// print_pstate_change(STATE_DIED, id, data->philos->tid, data, 0);
 		data->somebody_is_dead = TRUE;
-		printf("\033[31mIL EST MORT 3!!!!!!!!!!!!!!!!!!!!!!\033[0m\n");
 		pthread_mutex_unlock(&data->mtx_lock_message);
-		printf("\033[31mIL EST MORT 4!!!!!!!!!!!!!!!!!!!!!!\033[0m\n");
 		// exit_clean(data);
 		return (EXIT_FAILURE);  
 	}

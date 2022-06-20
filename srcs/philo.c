@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/20 14:29:58 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/20 14:43:24 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,21 @@ void	*philo_routine(void *arg)
 			break ;
 		philo_thinking(data, index_philo);
 	}
-	///////////////////////////////// DBG TEST ///////////////////////////////////////
-	// int i = 0;
-	// while (i != 5)
-	// {
-
-	// 	pthread_mutex_lock(&data->mtx_lock_message);
-	// 	printf("bonjour je suis philo %i\n", index_philo);
-	// 	pthread_mutex_unlock(&data->mtx_lock_message);
-	// 	// if (index_philo == 4)
-	// 	// 	usleep(800000);
-	// 	usleep(200000);
-	// 	i++;
-	// }
-	//if ("PAS UN MORT") //TODO:
-	// pthread_mutex_unlock(&data->mtx_somebody_is_dead);
+	///////////////////////////////// DBG TEST /////////////////////////////////
+	// int i = 0;															  //
+	// while (i != 5)														  //
+	// {																	  //
+	// 	pthread_mutex_lock(&data->mtx_lock_message);						  //
+	// 	printf("bonjour je suis philo %i\n", index_philo);					  //
+	// 	pthread_mutex_unlock(&data->mtx_lock_message);						  //
+	// 	// if (index_philo == 4)											  //
+	// 	// 	usleep(800000);													  //
+	// 	usleep(200000);														  //
+	// 	i++;																  //
+	// }																	  //
+	//if ("PAS UN MORT")													  //
+	// pthread_mutex_unlock(&data->mtx_somebody_is_dead);					  //
+	////////////////////////////////////////////////////////////////////////////
 	printf("\033[31mphilo %i finish, max eat is : %i\033[0m\n", index_philo, data->philos[index_philo - 1].ate_max);
 	return (0);
 }
@@ -81,7 +81,7 @@ int	init_philo(t_data *data)
 			printf("\033[31mDBG init philo i = %i\n\t ate nb = %i\n\033[37m", i, data->philos[i].ate_nb);
 		pthread_mutex_unlock(&data->mtx_lock_message);
 		i++;
-		usleep(5); /////////////////////////////// INTERVAL BORN PHILO
+		usleep(7); /////////////////////////////// INTERVAL BORN PHILO
 	}
 	while (data->id_philo > 0)
 	{
@@ -95,7 +95,7 @@ int	init_philo(t_data *data)
 	// }
 	// pthread_mutex_lock(&data->mtx_somebody_is_dead);
 	// pthread_mutex_unlock(&data->mtx_somebody_is_dead);
-	printf("COUCOU DE philo.c:102\n");
+	printf("COUCOU DE philo.c:102 (prog bien terminé)\n");
 	return (0);
 }
 
