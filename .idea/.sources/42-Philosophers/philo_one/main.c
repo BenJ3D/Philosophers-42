@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncolomer <ncolomer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/09 15:30:46 by ncolomer          #+#    #+#             */
-/*   Updated: 2019/12/13 15:12:06 by ncolomer         ###   ########.fr       */
+/*   Updated: 2022/06/21 01:16:10 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-static void
-	*monitor_count(void *state_v)
+static void		*monitor_count(void *state_v)
 {
 	t_state *state;
 	int		i;
@@ -33,8 +32,7 @@ static void
 	return ((void*)0);
 }
 
-static void
-	*monitor(void *philo_v)
+static void		*monitor(void *philo_v)
 {
 	t_philo		*philo;
 
@@ -54,8 +52,7 @@ static void
 	}
 }
 
-static void
-	*routine(void *philo_v)
+static void		*routine(void *philo_v)
 {
 	t_philo		*philo;
 	pthread_t	tid;
@@ -76,8 +73,7 @@ static void
 	return ((void*)0);
 }
 
-static int
-	start_threads(t_state *state)
+static int	start_threads(t_state *state)
 {
 	int			i;
 	pthread_t	tid;

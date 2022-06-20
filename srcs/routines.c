@@ -3,23 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   routines.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:22:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/20 14:36:12 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/21 01:42:08 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
 
-int	philo_taken_fork(t_data *data, int id)
-{
-	if (print_pstate_change(STATE_FORK, id, data->philos->tid, data, id))
-		write (1, "YESS\n", 5);
-	//usleep(50);
-	return(0);
-}
+//TODO: faire un moniteur qui check tous les times de chque philo toute les 1ms
+//TODO: et passe en dead si besoin
 
+//TODO: maybe add *lfork et *rfork avec ladresse des forks pour simplifier 
 /**
  * @brief 
  * 
@@ -56,10 +52,11 @@ int	philo_eating(t_data *data, int id)
 {
 	long	res_last_ate;
 	
-	pthread_mutex_lock(&data->mtx_lock_message);
+	// pthread_mutex_lock(&data->mtx_lock_message);
+	// res_last_ate = ((data->philos[id - 1].last_ate - time_get(data)) * -1);
+	// printf("res last ate = %li\n", res_last_ate);
+	// pthread_mutex_unlock(&data->mtx_lock_message);
 	res_last_ate = ((data->philos[id - 1].last_ate - time_get(data)) * -1);
-	printf("res last ate = %li\n", res_last_ate);
-	pthread_mutex_unlock(&data->mtx_lock_message);
 	if (data->somebody_is_dead == TRUE)
 		return (EXIT_FAILURE);
 	if ((res_last_ate * 1000) > data->time_rules.time_to_die)

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
+#    By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/29 16:05:24 by cfatrane          #+#    #+#              #
-#    Updated: 2022/06/14 17:10:13 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/06/21 00:54:32 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRC_NAME =	test.c					\
 			message_philo.c			\
 			time.c					\
 			exit.c					\
+			ft_putnbr.c				\
 			debug.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)

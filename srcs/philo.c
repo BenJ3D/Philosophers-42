@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/21 00:11:47 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/21 01:38:33 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	init_philo(t_data *data)
 			printf("\033[31mDBG init philo i = %i\n\t ate nb = %i\n\033[37m", i, data->philos[i].ate_nb);
 		pthread_mutex_unlock(&data->mtx_lock_message);
 		i++;
-		usleep(7); /////////////////////////////// INTERVAL BORN PHILO
+		usleep(15); /////////////////////////////// INTERVAL BORN PHILO
 	}
 	while (data->id_philo > 0)
 	{
