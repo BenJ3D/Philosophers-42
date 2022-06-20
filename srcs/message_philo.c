@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   message_philo.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:53:48 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/20 19:17:35 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/21 00:01:15 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int		print_pstate_change(e_state state, int pid, pthread_t tid,
 		printf("\033[31m%03i is died (msg_philo:39)\033[0m\n", pid);
 	else if (state == STATE_EATING)
 		printf("%03i is eating\n", pid);
-		write(1, )
 	else if (state == STATE_FORK)
 		printf("%03i has taken a fork %i\n", pid, dbgfork);
 	else if (state == STATE_SLEEP)
