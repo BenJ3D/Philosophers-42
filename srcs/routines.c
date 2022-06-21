@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:22:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/21 01:42:08 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/21 02:19:15 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 //TODO: faire un moniteur qui check tous les times de chque philo toute les 1ms
 //TODO: et passe en dead si besoin
+// res last ate devrait plutot etre juste apres chaque mutex fork car il y a de lattente
+
 
 //TODO: maybe add *lfork et *rfork avec ladresse des forks pour simplifier 
 /**
@@ -52,11 +54,11 @@ int	philo_eating(t_data *data, int id)
 {
 	long	res_last_ate;
 	
-	// pthread_mutex_lock(&data->mtx_lock_message);
-	// res_last_ate = ((data->philos[id - 1].last_ate - time_get(data)) * -1);
-	// printf("res last ate = %li\n", res_last_ate);
-	// pthread_mutex_unlock(&data->mtx_lock_message);
 	res_last_ate = ((data->philos[id - 1].last_ate - time_get(data)) * -1);
+	pthread_mutex_lock(&data->mtx_lock_message);
+	//res_last_ate = ((data->philos[id - 1].last_ate - time_get(data)) * -1);
+	printf("%03i res last ate = %li\n", id, res_last_ate);
+	pthread_mutex_unlock(&data->mtx_lock_message);
 	if (data->somebody_is_dead == TRUE)
 		return (EXIT_FAILURE);
 	if ((res_last_ate * 1000) > data->time_rules.time_to_die)
