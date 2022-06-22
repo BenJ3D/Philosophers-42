@@ -12,13 +12,11 @@
 
 #include "../includes/philosophers.h"
 
-//TODO: if number of philo = 1 ==>> thinks and sleep time life before mutex
 int main(int ac, char **argv)
 {
 	pthread_t id;
 	t_data	data;
 	
-	//printf("arg ac = %i\n", ac);
 	if (ac >= 5 && ac <= 6)
 		run_philo(&data, ac, argv);
 	else if (ac > 6)
@@ -27,6 +25,5 @@ int main(int ac, char **argv)
 		write_error_type(ERROR_MISSING_ARG);
 //	free(data.philos);
 	//exit_clean(&data); //FIXME:
-	printf("debug philos index 3 ==> id %i (2 attendu) || main:30\n", data.philos[3].id);
 	return (0);
 }

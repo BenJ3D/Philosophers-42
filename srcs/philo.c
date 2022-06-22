@@ -3,20 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/22 21:39:53 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/23 00:13:40 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
-
-int	check_last_ate(t_data data, int id)
-{
-
-	return (0);
-}
 
 void	*philo_routine(void *arg)
 {
@@ -44,7 +38,7 @@ void	*philo_routine(void *arg)
 	}
 	print_message(STATE_OVER, index_philo, data->philos[index_philo - 1].tid, \
 		data, 0);
-	printf("\033[31mphilo %i finish, max eat is : %i\033[0m\n", index_philo, data->philos[index_philo - 1].ate_max);
+	// printf("\033[31mphilo %i finish, max eat is : %i\033[0m\n", index_philo, data->philos[index_philo - 1].ate_max);
 	return (0);
 }
 

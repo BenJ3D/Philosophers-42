@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routines.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:22:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/22 21:00:18 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/22 23:49:05 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,8 @@ int	philo_sleeping(t_data *data, int id)
 	if (data->somebody_is_dead == TRUE)
 		return (EXIT_FAILURE);
 	print_message(STATE_SLEEP, id, data->philos->tid, data, 0);
+	if (data->somebody_is_dead == TRUE)
+		return (EXIT_FAILURE);
 	usleep(data->time_rules.time_to_sleep);
 	return(0);
 }
@@ -149,6 +151,8 @@ int	philo_thinking(t_data *data, int id)
 	if (data->somebody_is_dead == TRUE)
 		return (EXIT_FAILURE);
 	print_message(STATE_THINK, id, data->philos->tid, data, 0);
+	if (data->somebody_is_dead == TRUE)
+		return (EXIT_FAILURE);
 	return (0);
 }
 

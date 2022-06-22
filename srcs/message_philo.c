@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   message_philo.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:53:48 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/22 21:17:04 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/22 23:54:23 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		print_message(e_state state, int pid, pthread_t tid,
 	printf("%li\t", time_get(data));
 	if (state == STATE_EATING && data->somebody_is_dead == FALSE)
 	{
-		data->philos[pid - 1].last_ate = (time_get(data) - data->philos[pid - 1].last_ate);
+		data->philos[pid - 1].last_ate = (time_get(data));
 		printf("%i is eating\n", pid);
 	}
 	else if (state == STATE_DIED)
