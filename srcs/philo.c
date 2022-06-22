@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/21 16:22:16 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/22 21:39:53 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	*philo_routine(void *arg)
 
 	data = arg;
 	index_philo = data->id_philo;
+	data->philos[index_philo - 1].id = index_philo;
 	while (1)
 	{
 		if (data->somebody_is_dead == TRUE)
@@ -41,6 +42,8 @@ void	*philo_routine(void *arg)
 			break ;
 		philo_thinking(data, index_philo);
 	}
+	print_message(STATE_OVER, index_philo, data->philos[index_philo - 1].tid, \
+		data, 0);
 	printf("\033[31mphilo %i finish, max eat is : %i\033[0m\n", index_philo, data->philos[index_philo - 1].ate_max);
 	return (0);
 }
@@ -59,6 +62,7 @@ int	init_philo(t_data *data)
 		data->philos[i].is_died = FALSE;
 		data->philos[i].ate_nb = 0;
 		data->philos[i].last_ate = time_get(data);
+		data->philos[i].id = data->id_philo;
 		if (data->time_rules.ate_max_imposed == TRUE)
 			data->philos[i].ate_max = data->time_rules.max_philo_must_eat;
 		pthread_mutex_lock(&data->mtx_lock_message);
@@ -73,13 +77,6 @@ int	init_philo(t_data *data)
 		pthread_join(data->philos[data->id_philo - 1].tid, NULL);
 		data->id_philo--;
 	}
-	// while (data->id_philo > 0)
-	// {
-	// 	pthread_detach(data->philos[data->id_philo - 1].tid);
-	// 	data->id_philo--;
-	// }
-	// pthread_mutex_lock(&data->mtx_somebody_is_dead);
-	// pthread_mutex_unlock(&data->mtx_somebody_is_dead);
 	printf("COUCOU DE philo.c:102 (prog bien terminé)\n");
 	return (0);
 }
@@ -114,6 +111,7 @@ int	run_philo(t_data *data, int ac, char **argv)
 	// pthread_mutex_init(&data->mtx_somebody_is_dead, NULL);
 	init_forks(data);
 	data->somebody_is_dead = FALSE;
+	init_monitoring(data);
 	init_philo(data);
 	return (0);
 }

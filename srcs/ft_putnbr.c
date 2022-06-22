@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 10:35:51 by vvaltone          #+#    #+#             */
-/*   Updated: 2022/06/20 23:56:48 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/22 18:36:19 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int ft_intlen(long long nb)
 	return (i);
 }
 
-int ft_putnbr(int n)
+long ft_putnbr(long n)
 {
 	char c;
 	int len;

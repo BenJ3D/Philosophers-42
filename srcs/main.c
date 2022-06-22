@@ -27,5 +27,6 @@ int main(int ac, char **argv)
 		write_error_type(ERROR_MISSING_ARG);
 //	free(data.philos);
 	//exit_clean(&data); //FIXME:
+	printf("debug philos index 3 ==> id %i (2 attendu) || main:30\n", data.philos[3].id);
 	return (0);
 }

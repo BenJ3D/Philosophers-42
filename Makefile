@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/29 16:05:24 by cfatrane          #+#    #+#              #
-#    Updated: 2022/06/21 00:54:32 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/06/22 21:40:25 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ SRC_NAME =	test.c					\
 			time.c					\
 			exit.c					\
 			ft_putnbr.c				\
+			monitor.c				\
 			debug.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)

@@ -6,8 +6,9 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
+ 
 
-# Make data base, printed on Wed Jun 22 17:21:31 2022
+# Make data base, printed on Wed Jun 22 21:40:25 2022
 
 # Variables
 
@@ -15,9 +16,9 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
-# makefile (from `Makefile', line 50)
+# makefile (from `Makefile', line 51)
 OBJ = $(addprefix $(OBJ_PATH), $(OBJ_NAME))
-# makefile (from `Makefile', line 48)
+# makefile (from `Makefile', line 49)
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 # environment
 VSCODE_LOG_NATIVE = false
@@ -37,13 +38,13 @@ SHELL = /bin/sh
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
 _ = /usr/bin/make
-# makefile (from `Makefile', line 56)
+# makefile (from `Makefile', line 57)
 CFLAGS = 
 # makefile (from `Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
-# makefile (from `Makefile', line 57)
+# makefile (from `Makefile', line 58)
 SANITIZE = 
 # environment
 VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000bjf0002wbh/T/vscode-ipc-b752b9d3-7d5d-4442-a5e1-66edd990df36.sock
@@ -52,6 +53,7 @@ VSCODE_CWD = /
 # environment
 Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.DVbNsCPauH/Render
 # environment
+ 
 PATH = /Users/bducrocq/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/opt/X11/bin
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
@@ -105,10 +107,10 @@ MAKECMDGOALS := all
 HOMEBREW_CACHE = /tmp/bducrocq/Homebrew/Caches
 # environment
 SHLVL = 1
-# makefile (from `Makefile', line 54)
+# makefile (from `Makefile', line 55)
 CC = gcc $(CFLAGS) $(SANITIZE) $(LLDBFLAG)
 # makefile (from `Makefile', line 30)
-SRC_NAME = test.c philo.c main.c error.c parsing.c tools.c check_arg.c routines.c message_philo.c time.c exit.c ft_putnbr.c debug.c
+SRC_NAME = test.c philo.c main.c error.c parsing.c tools.c check_arg.c routines.c message_philo.c time.c exit.c ft_putnbr.c monitor.c debug.c
 # default
 MAKE_VERSION := 3.81
 # environment
@@ -161,11 +163,11 @@ OBJ_PATH = ./objs/
 ^F = $(notdir $^)
 # default
 SUFFIXES := 
-# makefile (from `Makefile', line 58)
+# makefile (from `Makefile', line 59)
 LLDBFLAG = -g3
 # default
 .INCLUDE_DIRS = /usr/local/include
-# makefile (from `Makefile', line 44)
+# makefile (from `Makefile', line 45)
 OBJ_NAME = $(SRC_NAME:.c=.o)
 # environment
 MAKELEVEL := 0
@@ -184,14 +186,14 @@ VSCODE_PID = 8360
 
 # . (device 16777229, inode 2603849): 15 files, no impossibilities.
 # includes (device 16777229, inode 2603934): 3 files, no impossibilities so far.
-# srcs (device 16777229, inode 2603935): 15 files, no impossibilities so far.
+# srcs (device 16777229, inode 2603935): 14 files, no impossibilities so far.
 
-# 33 files, no impossibilities in 3 directories.
+# 32 files, no impossibilities in 3 directories.
 
 # Implicit Rules
 
 objs/%.o: ./srcs/%.c ./includes/philosophers.h ./Makefile
-#  commands to execute (from `Makefile', line 81):
+#  commands to execute (from `Makefile', line 82):
 	@mkdir $(OBJ_PATH) 2> /dev/null || true
 	$(CC) $(CPPFLAGS) -o $@ -c $<
 	
@@ -206,82 +208,46 @@ all,:
 #  File does not exist.
 #  File has not been updated.
 
-objs/routines.o: srcs/routines.c includes/philosophers.h Makefile
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `routines'
-#  Last modified 2022-06-22 17:17:28
-#  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := objs/routines.o
-# automatic
-# % := 
-# automatic
-# * := routines
-# automatic
-# + := srcs/routines.c includes/philosophers.h Makefile
-# automatic
-# | := 
-# automatic
-# < := srcs/routines.c
-# automatic
-# ^ := srcs/routines.c includes/philosophers.h Makefile
-# automatic
-# ? := srcs/routines.c
-# variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=1/18=6%
-#  commands to execute (from `Makefile', line 81):
-	@mkdir $(OBJ_PATH) 2> /dev/null || true
-	$(CC) $(CPPFLAGS) -o $@ -c $<
-	
+# Not a target:
+objs/routines.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
-objs/main.o: srcs/main.c includes/philosophers.h Makefile
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `main'
-#  Last modified 2022-06-22 13:16:58
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 81):
-	@mkdir $(OBJ_PATH) 2> /dev/null || true
-	$(CC) $(CPPFLAGS) -o $@ -c $<
-	
+# Not a target:
+objs/main.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 all: philo
 #  Command-line target.
 #  Implicit rule search has been done.
+ 
 #  File does not exist.
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/8=0%
 
-philo: objs/test.o objs/philo.o objs/main.o objs/error.o objs/parsing.o objs/tools.o objs/check_arg.o objs/routines.o objs/message_philo.o objs/time.o objs/exit.o objs/ft_putnbr.o objs/debug.o
+philo: objs/test.o objs/philo.o objs/main.o objs/error.o objs/parsing.o objs/tools.o objs/check_arg.o objs/routines.o objs/message_philo.o objs/time.o objs/exit.o objs/ft_putnbr.o objs/monitor.o objs/debug.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-06-22 17:17:28
+#  Last modified 2022-06-22 21:39:57
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/8=0%
-#  commands to execute (from `Makefile', line 76):
+#  commands to execute (from `Makefile', line 77):
 	@echo "\033[34mCreation of $(NAME) on linux ...\033[0m"
 	@$(CC) $(OBJ) -o $@ -lpthread
 	@echo "\033[32m$(NAME) created\n\033[0m"
 	
 
-objs/error.o: srcs/error.c includes/philosophers.h Makefile
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `error'
-#  Last modified 2022-06-22 13:16:58
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 81):
-	@mkdir $(OBJ_PATH) 2> /dev/null || true
-	$(CC) $(CPPFLAGS) -o $@ -c $<
-	
+# Not a target:
+objs/error.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 objs/message_philo.o:
@@ -290,7 +256,6 @@ objs/message_philo.o:
 #  File has not been updated.
 
 .PHONY: all, clean, fclean, re
- 
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -302,32 +267,16 @@ objs/ft_putnbr.o:
 #  File has not been updated.
 
 # Not a target:
-srcs/tools.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-08 15:10:20
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-objs/parsing.o: srcs/parsing.c includes/philosophers.h Makefile
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `parsing'
-#  Last modified 2022-06-22 13:16:58
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 81):
-	@mkdir $(OBJ_PATH) 2> /dev/null || true
-	$(CC) $(CPPFLAGS) -o $@ -c $<
-	
+objs/parsing.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 git:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 103):
+#  commands to execute (from `Makefile', line 104):
 	@git add .
 	@printf "Message of the commit: " && read msg && git commit -m "$$msg"
 	@git push
@@ -340,27 +289,9 @@ git:
 #  File has not been updated.
 
 # Not a target:
-srcs/routines.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-22 17:18:14
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-# Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-21 13:50:05
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-# Not a target:
-srcs/main.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-17 16:11:36
+#  Last modified 2022-06-22 21:40:25
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -375,46 +306,37 @@ objs/debug.o:
 objs/test.o: srcs/test.c includes/philosophers.h Makefile
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `test'
-#  Last modified 2022-06-22 13:16:57
+#  Last modified 2022-06-22 21:39:15
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := objs/test.o
+# automatic
+# % := 
+# automatic
+# * := test
+# automatic
+# + := srcs/test.c includes/philosophers.h Makefile
+# automatic
+# | := 
+# automatic
+# < := srcs/test.c
+# automatic
+# ^ := srcs/test.c includes/philosophers.h Makefile
+# automatic
+# ? := Makefile
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 81):
-	@mkdir $(OBJ_PATH) 2> /dev/null || true
-	$(CC) $(CPPFLAGS) -o $@ -c $<
-	
-
-objs/check_arg.o: srcs/check_arg.c includes/philosophers.h Makefile
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `check_arg'
-#  Last modified 2022-06-22 13:16:58
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 81):
+# Load=8/32=25%, Rehash=0, Collisions=1/18=6%
+#  commands to execute (from `Makefile', line 82):
 	@mkdir $(OBJ_PATH) 2> /dev/null || true
 	$(CC) $(CPPFLAGS) -o $@ -c $<
 	
 
 # Not a target:
-srcs/parsing.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-07 14:52:06
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-# Not a target:
-srcs/error.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-03 16:42:11
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+objs/check_arg.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 fclean,:
 #  Phony target (prerequisite of .PHONY).
@@ -422,33 +344,32 @@ fclean,:
 #  File does not exist.
 #  File has not been updated.
 
-objs/philo.o: srcs/philo.c includes/philosophers.h Makefile
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `philo'
-#  Last modified 2022-06-22 13:16:58
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 81):
-	@mkdir $(OBJ_PATH) 2> /dev/null || true
-	$(CC) $(CPPFLAGS) -o $@ -c $<
-	
+# Not a target:
+objs/philo.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 includes/philosophers.h:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-20 15:13:52
+#  Last modified 2022-06-22 20:59:18
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+objs/monitor.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 fclean: clean
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 91):
+#  commands to execute (from `Makefile', line 92):
 	@echo "\033[33mRemoval of $(NAME)...\033[0m"
 	@rm -rf $(NAME)
 	@echo "\033[31mBinary $(NAME) deleted\n\033[0m"
@@ -464,15 +385,6 @@ objs/time.o:
 srcs/test.c:
 #  Implicit rule search has been done.
 #  Last modified 2022-06-02 19:11:33
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-# Not a target:
-srcs/check_arg.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-05-28 20:06:18
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -500,7 +412,7 @@ clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 85):
+#  commands to execute (from `Makefile', line 86):
 	@echo "\033[33mRemoval of .o files of $(NAME) ...\033[0m"
 	@rm -f $(OBJ)
 	@rmdir $(OBJ_PATH) 2> /dev/null || true
@@ -517,35 +429,19 @@ norme:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 98):
+#  commands to execute (from `Makefile', line 99):
 	norminette ./srcs/
 	norminette ./includes/*.h
 	
 
-objs/tools.o: srcs/tools.c includes/philosophers.h Makefile
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: `tools'
-#  Last modified 2022-06-22 13:16:58
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 81):
-	@mkdir $(OBJ_PATH) 2> /dev/null || true
-	$(CC) $(CPPFLAGS) -o $@ -c $<
-	
-
 # Not a target:
-srcs/philo.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-21 16:22:16
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+objs/tools.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # files hash-table stats:
-# Load=36/1024=4%, Rehash=0, Collisions=23/126=18%
+# Load=30/1024=3%, Rehash=0, Collisions=3/72=4%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -557,6 +453,6 @@ srcs/philo.c:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Wed Jun 22 17:21:31 2022
+# Finished Make data base on Wed Jun 22 21:40:25 2022
 
  

@@ -77,6 +77,11 @@ typedef struct s_philo
 	e_bool				ate_max;
 	long				last_ate;
 }				t_philo;
+typedef struct s_monitor
+{
+	long				*time_control;
+	pthread_t			tid;
+}			t_monitor;
 
 typedef struct s_data	
 {
@@ -92,7 +97,7 @@ typedef struct s_data
 	e_error				error;
 	struct timeval		current_time;
 	long				start_time;
-
+	t_monitor			monitor;
 	pthread_t			tid[MAX_THREAD]; // FIXME
 
 }				t_data;
@@ -100,15 +105,15 @@ typedef struct s_data
 /******-------------- philo prog --------------******/
 
 int				parsing_check(t_data *data, int ac, char **argv);
-int				print_pstate_change(e_state state, int pid, pthread_t tid,
+int				print_message(e_state state, int pid, pthread_t tid,
 					t_data *data, int dbgidfork);
 int				init_philo(t_data *data);
 void			*philo_routine(void *arg);
 int				init_forks(t_data *data);
+int				init_monitoring(t_data *data);
 int				run_philo(t_data *data, int ac, char **argv);
 int				check_last_ate(t_data data, int id);
 int				exit_clean(t_data *data);
-
 
 
 // int		print_pstate_change(e_state state, int pid, pthread_t tid,
@@ -121,8 +126,6 @@ int				time_init(t_data *data);
 void			time_print(t_data *data);
 long			time_get(t_data	*data);
 
-
-
 /******------------ philo routines ------------******/
 
 int				philo_taken_fork(t_data *data, int id);
@@ -130,9 +133,7 @@ int				philo_eating(t_data *data, int id);
 int				philo_sleeping(t_data *data, int id);
 int				philo_thinking(t_data *data, int id);
 int				philo_died(t_data *data, int id);
-int				philo_check_is_died(t_data *data, int id);
-
-
+long			philo_check_is_died(t_data *data, int id);
 
 /******-------------- tools libs --------------******/
 
