@@ -6,20 +6,13 @@
 /*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:22:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/22 23:49:05 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/23 00:26:31 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
 
-//TODO: faire un moniteur qui check tous les times de chque philo toute les 1ms
-//TODO: et passe en dead si besoin
-// res last ate devrait plutot etre juste apres chaque mutex fork car il y a de 
-// lattente
-
-
-//TODO: maybe add *lfork et *rfork avec ladresse des forks pour simplifier 
-
+//TODO: fix fork pour le last qui n'est pas bonne
 /**
  * @brief 
  * 
@@ -55,7 +48,7 @@ int	philo_eating(t_data *data, int id)
 	int	forkrid;
 	
 	forkrid = id;
-	if (id == data->number_of_philo)
+	if ((id) == data->number_of_philo)
 		forkrid = 0;
 	pthread_mutex_lock(&data->forks[id - 1].mtx_forks);
 	data->forks[id - 1].availability = FORK_NOT_AVAILABLE;
