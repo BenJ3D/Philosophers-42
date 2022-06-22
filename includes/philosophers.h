@@ -130,6 +130,8 @@ int				philo_eating(t_data *data, int id);
 int				philo_sleeping(t_data *data, int id);
 int				philo_thinking(t_data *data, int id);
 int				philo_died(t_data *data, int id);
+int				philo_check_is_died(t_data *data, int id);
+
 
 
 /******-------------- tools libs --------------******/

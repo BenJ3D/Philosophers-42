@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:22:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/22 17:23:20 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/22 17:44:00 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,44 @@ int	last_philo_eating(t_data *data, int id)
 	return(0);
 }
 
-int	philo_eating2(t_data *data)
+int	philo_eating(t_data *data, int id)
 {
+	int	forkrid;
+
 	if (data->somebody_is_dead == TRUE)
 		return (EXIT_FAILURE);
-	
+	philo_check_is_died(data, id);// creer un thread externe
+	forkrid = id;
+	if (id == data->number_of_philo)
+		forkrid = 0;
+	pthread_mutex_lock(&data->forks[id - 1].mtx_forks);
+	philo_check_is_died(data, id);// creer un thread externe
+	data->forks[id - 1].availability = FORK_NOT_AVAILABLE;
+	printf("%03i res last ate mtx1= %li\n", id, res_last_ate);
+	if (print_pstate_change(STATE_FORK, id, data->philos->tid, data, id - 1))
+		return (EXIT_FAILURE);
+	pthread_mutex_lock(&data->forks[forkrid].mtx_forks);
+	philo_check_is_died(data, id);// creer un thread externe
+	printf("%03i res last ate mtx2= %li\n", id, res_last_ate);
+	data->forks[forkrid].availability = FORK_NOT_AVAILABLE;
+	if (print_pstate_change(STATE_FORK, id, data->philos->tid, data, id))
+		return (EXIT_FAILURE);
+	data->philos[id - 1].last_ate = time_get(data); // ET ICIIIIIIIIIIIIIIII
+	if (print_pstate_change(STATE_EATING, id, data->philos->tid, data, 0))
+		return (EXIT_FAILURE);
+	usleep(data->time_rules.time_to_eat);
+	data->forks[id - 1].availability = FORK_AVAILABLE;
+	data->forks[forkrid].availability = FORK_AVAILABLE;
+	pthread_mutex_unlock(&data->forks[id - 1].mtx_forks);
+	pthread_mutex_unlock(&data->forks[forkrid].mtx_forks);
+	if (data->time_rules.ate_max_imposed == TRUE)
+		data->philos[id - 1].ate_nb++;
 	return (0);
 }
 
 
 
-int	philo_eating(t_data *data, int id) // TODO: simplifier en une seul fonction 
+int	philo_eatingold(t_data *data, int id) // TODO: simplifier en une seul fonction 
 						//avec un var pour lid fork en fonction du last ou non
 {
 	long	res_last_ate;
