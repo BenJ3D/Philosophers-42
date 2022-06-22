@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/21 01:38:33 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/21 16:22:16 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,6 @@ void	*philo_routine(void *arg)
 			break ;
 		philo_thinking(data, index_philo);
 	}
-	///////////////////////////////// DBG TEST /////////////////////////////////
-	// int i = 0;															  //
-	// while (i != 5)														  //
-	// {																	  //
-	// 	pthread_mutex_lock(&data->mtx_lock_message);						  //
-	// 	printf("bonjour je suis philo %i\n", index_philo);					  //
-	// 	pthread_mutex_unlock(&data->mtx_lock_message);						  //
-	// 	// if (index_philo == 4)											  //
-	// 	// 	usleep(800000);													  //
-	// 	usleep(200000);														  //
-	// 	i++;																  //
-	// }																	  //
-	//if ("PAS UN MORT")													  //
-	// pthread_mutex_unlock(&data->mtx_somebody_is_dead);					  //
-	////////////////////////////////////////////////////////////////////////////
 	printf("\033[31mphilo %i finish, max eat is : %i\033[0m\n", index_philo, data->philos[index_philo - 1].ate_max);
 	return (0);
 }
