@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routines.c                                         :+:      :+:    :+:   */
+/*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:22:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/22 14:07:11 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/22 17:23:20 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 //TODO: faire un moniteur qui check tous les times de chque philo toute les 1ms
 //TODO: et passe en dead si besoin
-// res last ate devrait plutot etre juste apres chaque mutex fork car il y a de lattente
+// res last ate devrait plutot etre juste apres chaque mutex fork car il y a de 
+// lattente
 
 
 //TODO: maybe add *lfork et *rfork avec ladresse des forks pour simplifier 
+
 /**
  * @brief 
  * 
@@ -27,7 +29,6 @@
  */
 int	last_philo_eating(t_data *data, int id)
 {
-	
 	pthread_mutex_lock(&data->forks[id - 1].mtx_forks);
 	data->forks[id - 1].availability = FORK_NOT_AVAILABLE;
 	if (print_pstate_change(STATE_FORK, id, data->philos->tid, data, id - 1))
@@ -49,13 +50,15 @@ int	last_philo_eating(t_data *data, int id)
 	return(0);
 }
 
-// void print_last_eat(t_data *data,  )
-
-int	check_die_status(t_data *data)
+int	philo_eating2(t_data *data)
 {
+	if (data->somebody_is_dead == TRUE)
+		return (EXIT_FAILURE);
 	
 	return (0);
 }
+
+
 
 int	philo_eating(t_data *data, int id) // TODO: simplifier en une seul fonction 
 						//avec un var pour lid fork en fonction du last ou non
@@ -143,4 +146,3 @@ int	philo_check_is_died(t_data *data, int id)
 	print_pstate_change(STATE_DIED, id, data->philos->tid, data, 0);
 	return(0);
 }
-

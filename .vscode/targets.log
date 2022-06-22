@@ -6,9 +6,8 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
- 
 
-# Make data base, printed on Wed Jun 22 15:07:26 2022
+# Make data base, printed on Wed Jun 22 17:21:31 2022
 
 # Variables
 
@@ -47,11 +46,11 @@ VSCODE_VERBOSE_LOGGING = true
 # makefile (from `Makefile', line 57)
 SANITIZE = 
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000bjf0002wbh/T/vscode-ipc-9606ceeb-e1d4-40a1-bba8-67ce920a56c3.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000bjf0002wbh/T/vscode-ipc-b752b9d3-7d5d-4442-a5e1-66edd990df36.sock
 # environment
 VSCODE_CWD = /
 # environment
-Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.ZYUafQCCDH/Render
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.DVbNsCPauH/Render
 # environment
 PATH = /Users/bducrocq/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/opt/X11/bin
 # environment
@@ -65,13 +64,13 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.HLS4iTrjWQ/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.JlNzbpNU95/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
 HOMEBREW_TEMP = /tmp/bducrocq/Homebrew/Temp
 # environment
-DISPLAY = /private/tmp/com.apple.launchd.FLXnWZZlj9/org.xquartz:0
+DISPLAY = /private/tmp/com.apple.launchd.tZVvDPw5St/org.xquartz:0
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
@@ -139,15 +138,13 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000003.Electron
+XPC_SERVICE_NAME = com.microsoft.VSCode.2544
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
 +F = $(notdir $+)
 # environment
 __CF_USER_TEXT_ENCODING = 0x17170:0x0:0x1
-# environment
-COMMAND_MODE = unix2003
 # default
 MAKEFILES := 
 # automatic
@@ -160,8 +157,6 @@ LC_ALL = C
 HEADER = ./includes/philosophers.h
 # makefile (from `Makefile', line 21)
 OBJ_PATH = ./objs/
-# environment
-SECURITYSESSIONID = 186a8
 # automatic
 ^F = $(notdir $^)
 # default
@@ -177,9 +172,9 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 1041
+VSCODE_PID = 8360
 # variable set hash-table stats:
-# Load=83/1024=8%, Rehash=0, Collisions=7/124=6%
+# Load=81/1024=8%, Rehash=0, Collisions=7/122=6%
 
 # Pattern-specific Variable Values
 
@@ -214,7 +209,7 @@ all,:
 objs/routines.o: srcs/routines.c includes/philosophers.h Makefile
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `routines'
-#  Last modified 2022-06-22 13:29:11
+#  Last modified 2022-06-22 17:17:28
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # automatic
@@ -264,7 +259,7 @@ all: philo
 
 philo: objs/test.o objs/philo.o objs/main.o objs/error.o objs/parsing.o objs/tools.o objs/check_arg.o objs/routines.o objs/message_philo.o objs/time.o objs/exit.o objs/ft_putnbr.o objs/debug.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-06-22 13:48:50
+#  Last modified 2022-06-22 17:17:28
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
@@ -295,6 +290,7 @@ objs/message_philo.o:
 #  File has not been updated.
 
 .PHONY: all, clean, fclean, re
+ 
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -302,7 +298,6 @@ objs/message_philo.o:
 # Not a target:
 objs/ft_putnbr.o:
 #  Implicit rule search has not been done.
- 
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -347,7 +342,7 @@ git:
 # Not a target:
 srcs/routines.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-22 14:07:11
+#  Last modified 2022-06-22 17:18:14
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -562,6 +557,6 @@ srcs/philo.c:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Wed Jun 22 15:07:26 2022
+# Finished Make data base on Wed Jun 22 17:21:31 2022
 
  
