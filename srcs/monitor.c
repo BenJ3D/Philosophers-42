@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 19:21:02 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/23 00:11:42 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/23 12:40:42 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void *monitoring(void *arg)
 		usleep(1 * 1000);
 	}
 	pthread_mutex_unlock(&data->mtx_lock_message);
+	//pthread_mutex_destroy(&data->mtx_lock_message);
 	return (0);
 }
 

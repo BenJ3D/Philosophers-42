@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   message_philo.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:53:48 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/22 23:54:23 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/23 12:31:22 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		print_message(e_state state, int pid, pthread_t tid,
 		printf("%i is eating\n", pid);
 	}
 	else if (state == STATE_DIED)
-		printf("\033[31m%i is died (msg_philo:39)\033[0m\n", pid);
+		printf("%i is died\n", pid);
 	else if (state == STATE_FORK && data->somebody_is_dead == FALSE)
 		printf("%i has taken a fork %i\n", pid, dbgfork);
 	else if (state == STATE_SLEEP && data->somebody_is_dead == FALSE)
@@ -41,6 +41,7 @@ int		print_message(e_state state, int pid, pthread_t tid,
 		printf("%i is thinking\n", pid);
 	else if (state == STATE_OVER && data->somebody_is_dead == FALSE)
 		printf("%i must eat count reached\n", pid);
+	// time_print_dbg(data);
 	pthread_mutex_unlock(&data->mtx_lock_message);
 	if (state == STATE_DIED)
 		return (EXIT_FAILURE);

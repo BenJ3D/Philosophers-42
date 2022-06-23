@@ -154,6 +154,7 @@ int				exit_clean(t_data *data);
 /******----------- debug functions ------------******/
 
 void			dbg_print_rules(t_data *data);
+void			time_print_dbg(t_data *data);
 
 
 
