@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/29 16:05:24 by cfatrane          #+#    #+#              #
-#    Updated: 2022/06/23 16:01:16 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/06/23 16:27:34 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,12 +52,13 @@ OBJ = $(addprefix $(OBJ_PATH), $(OBJ_NAME))
 
 # Flags
 
-CC = gcc $(CFLAGS) $(SANITIZE) $(THREAD) $(LLDBFLAG)
+CC = gcc $(CFLAGS) $(SANITIZE) $(THREAD) $(OPTIFLAG) $(LLDBFLAG)
 
 CFLAGS =# -Wall -Wextra -Werror
-SANITIZE = -fsanitize=address
-THREAD =# -fsanitize=thread
-LLDBFLAG = -o3 -g3
+SANITIZE =# -fsanitize=address
+THREAD = -fsanitize=thread
+LLDBFLAG =# -g3
+OPTIFLAG =# -o3
 
 # Rules
 

@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/23 15:43:14 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/23 16:34:16 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,23 +45,19 @@ int	init_philo(t_data *data)
 
 	i = 0;
 	data->id_philo = 0;
-	while(i < data->number_of_philo)
+	while(i < data->number_of_philo - 1)
 	{
 		data->id_philo++;
 		if(pthread_create(&data->philos[i].tid, NULL, &philo_routine, data))
 			return (EXIT_FAILURE);
 		data->philos[i].is_died = FALSE;
 		data->philos[i].ate_nb = 0;
-		data->philos[i].last_ate = time_get(data);
+		// data->philos[i].last_ate = time_get(data);
 		data->philos[i].id = data->id_philo;
 		if (data->time_rules.ate_max_imposed == TRUE)
 			data->philos[i].ate_max = data->time_rules.max_philo_must_eat;
-		pthread_mutex_lock(&data->mtx_lock_message);
-		if (DBG_PRINT == 1)
-			printf("DBG init philo i = %i\n\t ate nb = %i\n", i, data->philos[i].ate_nb);
-		pthread_mutex_unlock(&data->mtx_lock_message);
 		i++;
-		usleep(2); /////////////////////////////// INTERVAL BORN PHILO
+		usleep(10); /////////////////////////////// INTERVAL BORN PHILO
 	}
 	while (data->id_philo > 0)
 	{
@@ -77,11 +73,9 @@ int	init_forks(t_data *data)
 	int	i;
 
 	i = 0;
-	while (i < data->number_of_philo)
+	while (i < data->number_of_philo - 1)
 		pthread_mutex_init(&data->forks[i++].mtx_forks, NULL);
 	i = 0;
-	while (i < data->number_of_philo)
-		data->forks[i++].availability = FORK_AVAILABLE;
 	return (0);
 }
 
@@ -93,9 +87,9 @@ int	run_philo(t_data *data, int ac, char **argv)
 		data->time_rules.ate_max_imposed = TRUE;
 	else
 		data->time_rules.ate_max_imposed = FALSE;
-	if (!(data->philos = malloc(sizeof(t_philo) * data->number_of_philo)))
+	if (!(data->philos = (t_philo*)malloc(sizeof(t_philo) * data->number_of_philo)))
 		return (EXIT_FAILURE);
-	if (!(data->forks = malloc(sizeof(t_fork) * data->number_of_philo)))
+	if (!(data->forks = (t_fork*)malloc(sizeof(t_fork) * data->number_of_philo)))
 		return (EXIT_FAILURE);
 	time_init(data); // FIXME:
 	pthread_mutex_init(&data->mtx_lock_message, NULL);

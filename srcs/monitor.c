@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 19:21:02 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/23 15:03:07 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/23 16:16:36 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ void *monitoring(void *arg)
 			while(i < data->number_of_philo)
 				pthread_detach(data->philos[i++].tid);
 			i = 0;
-			while(i < data->number_of_philo)
-			{
-				data->forks[i].availability = FORK_NOT_AVAILABLE;
-				pthread_mutex_destroy(&data->forks[i++].mtx_forks);
-			}
+			// while(i < data->number_of_philo)
+			// {
+			// 	data->forks[i].availability = FORK_NOT_AVAILABLE;
+			// 	pthread_mutex_destroy(&data->forks[i++].mtx_forks);
+			// }
 			break ;
 		}
 		i++;

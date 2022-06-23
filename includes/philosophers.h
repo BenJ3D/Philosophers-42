@@ -64,7 +64,7 @@ typedef struct	s_debug_mod
 
 typedef struct s_fork
 {
-	e_fork				availability;
+	//e_fork				availability;
 	pthread_mutex_t		mtx_forks;
 }				t_fork;
 typedef struct s_philo
