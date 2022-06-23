@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/23 16:34:16 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/23 16:49:52 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,9 @@ int	run_philo(t_data *data, int ac, char **argv)
 		data->time_rules.ate_max_imposed = TRUE;
 	else
 		data->time_rules.ate_max_imposed = FALSE;
-	if (!(data->philos = (t_philo*)malloc(sizeof(t_philo) * data->number_of_philo)))
+	if (!(data->philos = malloc(sizeof(t_philo) * data->number_of_philo)))
 		return (EXIT_FAILURE);
-	if (!(data->forks = (t_fork*)malloc(sizeof(t_fork) * data->number_of_philo)))
+	if (!(data->forks = malloc(sizeof(t_fork) * data->number_of_philo)))
 		return (EXIT_FAILURE);
 	time_init(data); // FIXME:
 	pthread_mutex_init(&data->mtx_lock_message, NULL);

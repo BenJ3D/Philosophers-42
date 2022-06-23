@@ -55,18 +55,26 @@ typedef struct s_time_rules
 	int			time_to_sleep;
 	int			max_philo_must_eat;
 	e_bool		ate_max_imposed;
-}				t_time_rules;			t_debug_mod;
+}				t_time_rules;
+
+typedef struct	s_debug_mod
+{
+	e_bool		debug;
+}				t_debug_mod;
 
 typedef struct s_fork
 {
+	//e_fork				availability;
 	pthread_mutex_t		mtx_forks;
 }				t_fork;
 typedef struct s_philo
 {
 	pthread_t			tid;
 	int					id;
+	e_bool				is_died; //FIXME: 
 	e_state				state_philo;
 	int					ate_nb;
+	e_bool				ate_max;
 	long				last_ate;
 }				t_philo;
 typedef struct s_monitor
@@ -77,30 +85,23 @@ typedef struct s_monitor
 
 typedef struct s_data	
 {
+	int					id_philo;
 	int					number_of_philo;
 	t_philo				*philos;
 	t_fork				*forks;
-	t_time_rules		rules;
+	//t_philo			*current_philo; //FIXME:
+	t_time_rules		time_rules;
 	pthread_mutex_t		mtx_lock_message;
+	// pthread_mutex_t		mtx_somebody_is_dead;
 	e_bool				somebody_is_dead;
 	e_error				error;
 	struct timeval		current_time;
 	long				start_time;
 	t_monitor			monitor;
+	pthread_t			tid[MAX_THREAD]; // FIXME
 
 }				t_data;
 
-/******-------------- philo prog --------------******/
-
-
-
-
-
-
-
-/******-------------- OLD --------------******/
-/******-------------- OLD --------------******/
-/******-------------- OLD --------------******/
 /******-------------- philo prog --------------******/
 
 int				parsing_check(t_data *data, int ac, char **argv);
