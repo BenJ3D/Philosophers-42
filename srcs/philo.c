@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/23 00:13:40 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/23 15:43:14 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,13 @@ void	*philo_routine(void *arg)
 	{
 		if (data->somebody_is_dead == TRUE)
 			break ;
-		if (philo_eating(data, index_philo) == EXIT_FAILURE)
-			break ;
+		philo_eating(data, index_philo);
 		if (data->time_rules.ate_max_imposed == TRUE \
 		&& data->philos[index_philo - 1].ate_nb \
 		== data->philos[index_philo - 1].ate_max)
 			break ;
 		if (data->somebody_is_dead == FALSE)
-			philo_sleeping(data, index_philo);
-		if (data->somebody_is_dead == TRUE)
-			break ;
+		philo_sleeping(data, index_philo);
 		philo_thinking(data, index_philo);
 	}
 	print_message(STATE_OVER, index_philo, data->philos[index_philo - 1].tid, \
@@ -61,10 +58,10 @@ int	init_philo(t_data *data)
 			data->philos[i].ate_max = data->time_rules.max_philo_must_eat;
 		pthread_mutex_lock(&data->mtx_lock_message);
 		if (DBG_PRINT == 1)
-			printf("\033[31mDBG init philo i = %i\n\t ate nb = %i\n\033[37m", i, data->philos[i].ate_nb);
+			printf("DBG init philo i = %i\n\t ate nb = %i\n", i, data->philos[i].ate_nb);
 		pthread_mutex_unlock(&data->mtx_lock_message);
 		i++;
-		usleep(15); /////////////////////////////// INTERVAL BORN PHILO
+		usleep(2); /////////////////////////////// INTERVAL BORN PHILO
 	}
 	while (data->id_philo > 0)
 	{
@@ -100,7 +97,7 @@ int	run_philo(t_data *data, int ac, char **argv)
 		return (EXIT_FAILURE);
 	if (!(data->forks = malloc(sizeof(t_fork) * data->number_of_philo)))
 		return (EXIT_FAILURE);
-	time_init(data);
+	time_init(data); // FIXME:
 	pthread_mutex_init(&data->mtx_lock_message, NULL);
 	// pthread_mutex_init(&data->mtx_somebody_is_dead, NULL);
 	init_forks(data);
