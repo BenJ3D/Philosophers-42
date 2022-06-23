@@ -92,6 +92,7 @@ typedef struct s_data
 	//t_philo			*current_philo; //FIXME:
 	t_time_rules		time_rules;
 	pthread_mutex_t		mtx_lock_message;
+	pthread_mutex_t		mtx_lock_gettime;
 	// pthread_mutex_t		mtx_somebody_is_dead;
 	e_bool				somebody_is_dead;
 	e_error				error;

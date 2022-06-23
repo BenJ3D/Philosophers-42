@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/23 16:34:16 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/23 19:22:05 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,12 @@ int	init_philo(t_data *data)
 			return (EXIT_FAILURE);
 		data->philos[i].is_died = FALSE;
 		data->philos[i].ate_nb = 0;
-		// data->philos[i].last_ate = time_get(data);
-		data->philos[i].id = data->id_philo;
+		//data->philos[i].last_ate = time_get(data);
+		//data->philos[i].id = data->id_philo;
 		if (data->time_rules.ate_max_imposed == TRUE)
 			data->philos[i].ate_max = data->time_rules.max_philo_must_eat;
 		i++;
-		usleep(10); /////////////////////////////// INTERVAL BORN PHILO
+		usleep(75); /////////////////////////////// INTERVAL BORN PHILO
 	}
 	while (data->id_philo > 0)
 	{
@@ -93,6 +93,7 @@ int	run_philo(t_data *data, int ac, char **argv)
 		return (EXIT_FAILURE);
 	time_init(data); // FIXME:
 	pthread_mutex_init(&data->mtx_lock_message, NULL);
+	pthread_mutex_init(&data->mtx_lock_gettime, NULL);
 	// pthread_mutex_init(&data->mtx_somebody_is_dead, NULL);
 	init_forks(data);
 	data->somebody_is_dead = FALSE;

@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:53:48 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/23 13:50:22 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/23 19:17:23 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		print_message(e_state state, int pid, pthread_t tid,
 	printf("%li\t", time_get(data));
 	if (state == STATE_EATING && data->somebody_is_dead == FALSE)
 	{
-		data->philos[pid - 1].last_ate = (time_get(data));
+		data->philos[pid - 1].last_ate = (time_get(data)); //FIXME: data race
 		printf("%i is eating\n", pid);
 	}
 	else if (state == STATE_DIED)
@@ -42,7 +42,7 @@ int		print_message(e_state state, int pid, pthread_t tid,
 	else if (state == STATE_OVER && data->somebody_is_dead == FALSE)
 		printf("%i must eat count reached\n", pid);
 	// time_print_dbg(data);
-	usleep(1);
+	//usleep(1);
 	pthread_mutex_unlock(&data->mtx_lock_message);
 	if (state == STATE_DIED)
 		return (EXIT_FAILURE);

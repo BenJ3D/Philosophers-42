@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:22:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/23 18:19:17 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/23 19:02:12 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	philo_eating(t_data *data, int id)
 	//data->forks[forkrid].availability = FORK_NOT_AVAILABLE;
 	print_message(STATE_FORK, id, data->philos->tid, data, forkrid);
 	print_message(STATE_EATING, id, data->philos->tid, data, 0);
-	usleep(data->time_rules.time_to_eat);
+	usleep(data->time_rules.time_to_eat); //FIXME:
 	//data->forks[id - 1].availability = FORK_AVAILABLE;
 	//data->forks[forkrid].availability = FORK_AVAILABLE;
 	pthread_mutex_unlock(&data->forks[id - 1].mtx_forks);
@@ -42,7 +42,7 @@ int	philo_sleeping(t_data *data, int id)
 {
 
 	print_message(STATE_SLEEP, id, data->philos->tid, data, 0);
-	usleep(data->time_rules.time_to_sleep * 0.97);
+	usleep(data->time_rules.time_to_sleep);
 	return(0);
 }
 
