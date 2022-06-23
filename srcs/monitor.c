@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 19:21:02 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/23 13:57:15 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/23 14:27:12 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void *monitoring(void *arg)
 			break ;
 		}
 		i++;
-		usleep(1 * 1000);
+		usleep(5 * 1000);
 	}
 	printf("fin du monitoring\n");
 	pthread_mutex_unlock(&data->mtx_lock_message);
