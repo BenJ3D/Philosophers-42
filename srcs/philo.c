@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/24 18:24:17 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/24 18:55:58 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ int	init_philo(t_data *data)
 			return (EXIT_FAILURE);
 		data->philos[i].is_died = FALSE;
 		data->philos[i].ate_nb = 0;
-		//data->philos[i].last_ate = time_get(data);
-		//data->philos[i].id = data->id_philo;
+		data->philos[i].last_ate = time_get(data);
+		data->philos[i].id = data->id_philo;
 		if (data->time_rules.ate_max_imposed == TRUE)
 			data->philos[i].ate_max = data->time_rules.max_philo_must_eat;
 		i++;
