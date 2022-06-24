@@ -6,7 +6,7 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/29 16:05:24 by cfatrane          #+#    #+#              #
-#    Updated: 2022/06/23 19:13:47 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/06/24 17:00:35 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,8 +56,8 @@ CC = gcc $(CFLAGS) $(SANITIZE) $(THREAD) $(OPTIFLAG) $(LLDBFLAG)
 
 CFLAGS =# -Wall -Wextra -Werror
 SANITIZE =# -fsanitize=address
-THREAD = -fsanitize=thread
-LLDBFLAG = -g3
+THREAD =# -fsanitize=thread
+LLDBFLAG =# -g3
 OPTIFLAG = -o3
 
 # Rules

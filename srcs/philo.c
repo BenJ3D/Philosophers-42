@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/23 19:22:05 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/24 18:24:17 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,13 @@ int	init_philo(t_data *data)
 		if (data->time_rules.ate_max_imposed == TRUE)
 			data->philos[i].ate_max = data->time_rules.max_philo_must_eat;
 		i++;
-		usleep(75); /////////////////////////////// INTERVAL BORN PHILO
+		usleep(60); /////////////////////////////// INTERVAL BORN PHILO
 	}
 	while (data->id_philo > 0)
 	{
 		pthread_join(data->philos[data->id_philo - 1].tid, NULL);
 		data->id_philo--;
 	}
-	printf("COUCOU DE philo.c:102 (prog bien terminé)\n");
 	return (0);
 }
 

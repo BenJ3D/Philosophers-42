@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 19:21:02 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/23 18:57:15 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/24 16:59:35 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void *monitoring(void *arg)
 			pthread_mutex_lock(&data->mtx_lock_message);
 			i = 0;
 			data->somebody_is_dead = TRUE;
-			while(i < data->number_of_philo)
-				pthread_detach(data->philos[i++].tid);
+			// while(i < data->number_of_philo)
+			// 	pthread_detach(data->philos[i++].tid);
 			i = 0;
 			// while(i < data->number_of_philo)
 			// {
