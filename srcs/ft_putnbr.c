@@ -6,17 +6,17 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 10:35:51 by vvaltone          #+#    #+#             */
-/*   Updated: 2022/06/22 18:36:19 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/25 21:27:33 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
 
-int ft_intlen(long long nb)
+int	ft_intlen(long long nb)
 {
-	long long i;
-	long long res;
-	int sign;
+	long long	i;
+	long long	res;
+	int			sign;
 
 	sign = 0;
 	i = 0;
@@ -35,10 +35,10 @@ int ft_intlen(long long nb)
 	return (i);
 }
 
-long ft_putnbr(long n)
+long	ft_putnbr(long n)
 {
-	char c;
-	int len;
+	char	c;
+	int		len;
 
 	len = ft_intlen((long long)n);
 	if (n == -2147483648)

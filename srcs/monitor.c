@@ -6,39 +6,32 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 19:21:02 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/25 18:06:26 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/25 21:30:43 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
 
-void *monitoring(void *arg)
+void	*monitoring(void *arg)
 {
-	t_data *data;
-	long time;
-	int i;
+	t_data	*data;
+	long	time;
+	int		i;
 
 	data = arg;
 	while (1)
 	{
 		if (data->somebody_is_dead == TRUE)
-			break;
+			break ;
 		i = 0;
 		time = time_get(data);
-		if ((time - data->philos[i].last_ate) > data->time_rules.time_to_die / 1000)
+		if ((time - data->philos[i].last_ate) > \
+		data->time_rules.time_to_die / 1000)
 		{
-			print_message(STATE_DIED, i + 1, data->philos->tid, data, 0);
+			print_message(STATE_DIED, i + 1, data->philos->tid, data);
 			pthread_mutex_lock(&data->mtx_lock_message);
 			i = 0;
 			data->somebody_is_dead = TRUE;
-			// while(i < data->number_of_philo)
-			// 	pthread_detach(data->philos[i++].tid);
-			i = 0;
-			// while(i < data->number_of_philo)
-			// {
-			// 	data->forks[i].availability = FORK_NOT_AVAILABLE;
-			// 	pthread_mutex_destroy(&data->forks[i++].mtx_forks);
-			// }
 			break ;
 		}
 		i++;
@@ -48,9 +41,9 @@ void *monitoring(void *arg)
 	return (0);
 }
 
-int init_monitoring(t_data *data)
+int	init_monitoring(t_data *data)
 {
-	int i;
+	int	i;
 
 	data->monitor.time_control = malloc(sizeof(long) * data->number_of_philo);
 	if (!data->monitor.time_control)
