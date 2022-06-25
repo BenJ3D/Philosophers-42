@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:53:48 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/25 18:03:51 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/25 18:10:27 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		print_message(e_state state, int pid, pthread_t tid,
 		printf("%li\t", time_get(data));
 	if (state == STATE_EATING && data->somebody_is_dead == FALSE)
 	{
-		data->philos[pid - 1].last_ate = (time_get(data)); //FIXME: data race
+		data->philos[pid - 1].last_ate = (time_get(data));
 		printf("%i is eating\n", pid);
 	}
 	else if (state == STATE_DIED)

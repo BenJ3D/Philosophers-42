@@ -1,6 +1,0 @@
-Please enter int number for :
-		number_of_philosophers
-		time_to_die in ms
- 		time_to_eat in ms
- 		time_to_sleep in ms
- 		number_of_times_each_philosopher_must_eat(optional)

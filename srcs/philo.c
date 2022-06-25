@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/25 17:50:57 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/25 18:13:09 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ int	init_forks(t_data *data)
 int	run_philo(t_data *data, int ac, char **argv)
 {
 	parsing_check(data, ac, argv);
-	dbg_print_rules(data); //FIXME:
 	if (ac == 6 && (ft_atoi_long(argv[5]) > 0))
 		data->time_rules.ate_max_imposed = TRUE;
 	else
@@ -91,9 +90,9 @@ int	run_philo(t_data *data, int ac, char **argv)
 		return (EXIT_FAILURE);
 	if (!(data->forks = (t_fork*)malloc(sizeof(t_fork) * data->number_of_philo)))
 		return (EXIT_FAILURE);
-	time_init(data); // FIXME:
 	pthread_mutex_init(&data->mtx_lock_message, NULL);
 	pthread_mutex_init(&data->mtx_lock_gettime, NULL);
+	time_init(data);
 	init_forks(data);
 	data->somebody_is_dead = FALSE;
 	init_monitoring(data);

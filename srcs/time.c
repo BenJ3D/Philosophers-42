@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/23 19:34:37 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/25 18:13:21 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 int	time_init(t_data *data)
 {
-	//gettimeofday(&data->current_time, NULL);
 	data->start_time = time_get(data);
-	printf("time is : %lu\n", time_get(data));	//FIXME:
 	return (0);
 }
 

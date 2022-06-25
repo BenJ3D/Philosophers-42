@@ -2,7 +2,6 @@ make --dry-run --always-make --keep-going --print-directory
 make: Entering directory `/Users/bducrocq/projets/42cursus/philosophers42'
 mkdir ./objs/ 2> /dev/null || true
 gcc    -o3  -I./includes/ -o objs/test.o -c srcs/test.c
- 
 mkdir ./objs/ 2> /dev/null || true
 gcc    -o3  -I./includes/ -o objs/philo.o -c srcs/philo.c
 mkdir ./objs/ 2> /dev/null || true
@@ -13,7 +12,6 @@ mkdir ./objs/ 2> /dev/null || true
 gcc    -o3  -I./includes/ -o objs/parsing.o -c srcs/parsing.c
 mkdir ./objs/ 2> /dev/null || true
 gcc    -o3  -I./includes/ -o objs/tools.o -c srcs/tools.c
- 
 mkdir ./objs/ 2> /dev/null || true
 gcc    -o3  -I./includes/ -o objs/check_arg.o -c srcs/check_arg.c
 mkdir ./objs/ 2> /dev/null || true
@@ -24,15 +22,11 @@ mkdir ./objs/ 2> /dev/null || true
 gcc    -o3  -I./includes/ -o objs/time.o -c srcs/time.c
 mkdir ./objs/ 2> /dev/null || true
 gcc    -o3  -I./includes/ -o objs/exit.o -c srcs/exit.c
- 
 mkdir ./objs/ 2> /dev/null || true
 gcc    -o3  -I./includes/ -o objs/ft_putnbr.o -c srcs/ft_putnbr.c
 mkdir ./objs/ 2> /dev/null || true
 gcc    -o3  -I./includes/ -o objs/monitor.o -c srcs/monitor.c
-mkdir ./objs/ 2> /dev/null || true
-gcc    -o3  -I./includes/ -o objs/debug.o -c srcs/debug.c
-echo "\033[34mCreation of philo on linux ...\033[0m"
-gcc    -o3  ./objs/test.o ./objs/philo.o ./objs/main.o ./objs/error.o ./objs/parsing.o ./objs/tools.o ./objs/check_arg.o ./objs/routines.o ./objs/message_philo.o ./objs/time.o ./objs/exit.o ./objs/ft_putnbr.o ./objs/monitor.o ./objs/debug.o -o philo -lpthread
-echo "\033[32mphilo created\n\033[0m"
 make: Leaving directory `/Users/bducrocq/projets/42cursus/philosophers42'
  
+make: *** No rule to make target `objs/debug.o', needed by `philo'.
+

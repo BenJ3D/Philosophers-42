@@ -23,7 +23,6 @@ int main(int ac, char **argv)
 		write_error_type(ERROR_NB_ARGS);
 	else
 		write_error_type(ERROR_MISSING_ARG);
-//	free(data.philos);
-	//exit_clean(&data); //FIXME:
+	exit_clean(&data); //FIXME:
 	return (0);
 }
