@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/24 19:05:36 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/25 17:50:57 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	*philo_routine(void *arg)
 	}
 	print_message(STATE_OVER, index_philo, data->philos[index_philo - 1].tid, \
 		data, 0);
-	// printf("\033[31mphilo %i finish, max eat is : %i\033[0m\n", index_philo, data->philos[index_philo - 1].ate_max);
 	return (0);
 }
 
@@ -57,7 +56,7 @@ int	init_philo(t_data *data)
 		if (data->time_rules.ate_max_imposed == TRUE)
 			data->philos[i].ate_max = data->time_rules.max_philo_must_eat;
 		i++;
-		usleep(75); /////////////////////////////// INTERVAL BORN PHILO
+		usleep(60);
 	}
 	while (data->id_philo > 0)
 	{
@@ -88,12 +87,13 @@ int	run_philo(t_data *data, int ac, char **argv)
 		data->time_rules.ate_max_imposed = FALSE;
 	if (!(data->philos = (t_philo*)malloc(sizeof(t_philo) * data->number_of_philo)))
 		return (EXIT_FAILURE);
+	if (!(data->tid = (pthread_t*)malloc(sizeof(pthread_t) * data->number_of_philo)))
+		return (EXIT_FAILURE);
 	if (!(data->forks = (t_fork*)malloc(sizeof(t_fork) * data->number_of_philo)))
 		return (EXIT_FAILURE);
 	time_init(data); // FIXME:
 	pthread_mutex_init(&data->mtx_lock_message, NULL);
 	pthread_mutex_init(&data->mtx_lock_gettime, NULL);
-	// pthread_mutex_init(&data->mtx_somebody_is_dead, NULL);
 	init_forks(data);
 	data->somebody_is_dead = FALSE;
 	init_monitoring(data);

@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:53:48 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/24 18:21:16 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/25 18:03:51 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
  * 
  * @param state state philo
  * @param pid philo index
- * @param tid thread id
+ * @param tid thread idœ
  * @param data 
  * @return int 
  */
@@ -33,18 +33,15 @@ int		print_message(e_state state, int pid, pthread_t tid,
 		printf("%i is eating\n", pid);
 	}
 	else if (state == STATE_DIED)
-		printf("%li\t%i is died\n", time_get(data), pid);
+		printf("%i is died\n", pid);
 	else if (state == STATE_FORK && data->somebody_is_dead == FALSE)
 		printf("%i has taken a fork\n", pid);
-		// printf("%i has taken a fork %i\n", pid, dbgfork);
 	else if (state == STATE_SLEEP && data->somebody_is_dead == FALSE)
 		printf("%i is sleeping\n", pid);
 	else if (state == STATE_THINK && data->somebody_is_dead == FALSE)
 		printf("%i is thinking\n", pid);
 	else if (state == STATE_OVER && data->somebody_is_dead == FALSE)
 		printf("%i must eat count reached\n", pid);
-	// time_print_dbg(data);
-	//usleep(1);
 	pthread_mutex_unlock(&data->mtx_lock_message);
 	if (state == STATE_DIED)
 		return (EXIT_FAILURE);

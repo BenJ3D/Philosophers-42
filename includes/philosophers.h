@@ -31,6 +31,7 @@ typedef enum
 	ERROR_IS_NOT_INT,
 	ERROR_INT_MAXUP,
 	ERROR_INT_MINDOWN,
+	ERROR_MAX_PHILOS,
 	ERROR
 }	e_error;
 
@@ -56,11 +57,6 @@ typedef struct s_time_rules
 	int			max_philo_must_eat;
 	e_bool		ate_max_imposed;
 }				t_time_rules;
-
-typedef struct	s_debug_mod
-{
-	e_bool		debug;
-}				t_debug_mod;
 
 typedef struct s_fork
 {
@@ -99,7 +95,7 @@ typedef struct s_data
 	struct timeval		current_time;
 	long				start_time;
 	t_monitor			monitor;
-	pthread_t			tid[MAX_THREAD]; // FIXME
+	pthread_t			*tid; // FIXME
 
 }				t_data;
 

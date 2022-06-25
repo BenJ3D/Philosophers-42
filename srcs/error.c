@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/22 23:47:20 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/25 17:58:26 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	write_error_type(int error_type)
 		ft_putstr_fd("Error :\tPlease do not exceed int_max and int_min\n", 2);
 	else if (error_type == ERROR_MISSING_ARG)
 		ft_putstr_fd("Error :\trequired arguments missing\n", 2);
+	else if (error_type == ERROR_MAX_PHILOS)
+		ft_putstr_fd("Error :\tmax philo is 500\n", 2);
 	if (error_type != NO_ERROR)
 		ft_putstr_fd("Please enter int number for :\n\
 		number_of_philosophers\n\
