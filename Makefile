@@ -6,7 +6,7 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/29 16:05:24 by cfatrane          #+#    #+#              #
-#    Updated: 2022/06/24 17:00:35 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/06/25 21:39:55 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,7 @@ HEADER = ./includes/philosophers.h
 
 # Name
 
-SRC_NAME =	test.c					\
-			philo.c					\
+SRC_NAME =	philo.c					\
 			main.c					\
 			error.c					\
 			parsing.c				\
@@ -39,8 +38,7 @@ SRC_NAME =	test.c					\
 			time.c					\
 			exit.c					\
 			ft_putnbr.c				\
-			monitor.c				\
-			debug.c
+			monitor.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
