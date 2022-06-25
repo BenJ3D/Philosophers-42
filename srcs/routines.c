@@ -6,11 +6,38 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:22:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/25 21:45:33 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/25 22:04:29 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
+
+
+int	philo_eating_dbg(t_data *data, int id)
+{
+	int	forkrid;
+
+	forkrid = id;
+	if (id == data->number_of_philo)
+		forkrid = 0;
+	pthread_mutex_lock(&data->forks[id - 1].mtx_forks);
+	data->forks[id - 1].availability = FORK_NOT_AVAILABLE;
+	print_message(STATE_FORK, id, data->philos->tid, data, id - 1);
+	pthread_mutex_lock(&data->forks[forkrid].mtx_forks);
+	data->forks[forkrid].availability = FORK_NOT_AVAILABLE;
+	print_message(STATE_FORK, id, data->philos->tid, data, id);
+	print_message(STATE_EATING, id, data->philos->tid, data, 0);
+	usleep(data->time_rules.time_to_eat);
+	data->forks[id - 1].availability = FORK_AVAILABLE;
+	data->forks[forkrid].availability = FORK_AVAILABLE;
+	pthread_mutex_unlock(&data->forks[id - 1].mtx_forks);
+	pthread_mutex_unlock(&data->forks[forkrid].mtx_forks);
+	if (data->time_rules.ate_max_imposed == TRUE)
+		data->philos[id - 1].ate_nb++;
+	if (data->somebody_is_dead == TRUE)
+		return (EXIT_FAILURE);
+	return (0);
+}
 
 int	philo_eating(t_data *data, int id)
 {
@@ -21,8 +48,10 @@ int	philo_eating(t_data *data, int id)
 		forkrid = 0;
 	pthread_mutex_lock(&data->forks[id - 1].mtx_forks);
 	print_message(STATE_FORK, id, data->philos->tid, data);
+	printf("\033[31m%i\033[0m\n", id - 1);							//FIXME:
 	pthread_mutex_lock(&data->forks[forkrid].mtx_forks);
 	print_message(STATE_FORK, id, data->philos->tid, data);
+	printf("\033[31m%i\033[0m\n", forkrid);							//FIXME:
 	print_message(STATE_EATING, id, data->philos->tid, data);
 	usleep(data->time_rules.time_to_eat);
 	pthread_mutex_unlock(&data->forks[id - 1].mtx_forks);

@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 21:20:54 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/25 21:40:15 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/25 21:52:02 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,5 +146,6 @@ int				exit_clean(t_data *data);
 
 void			dbg_print_rules(t_data *data);
 void			time_print_dbg(t_data *data);
+long			ft_putnbr(long n);
 
 #endif
