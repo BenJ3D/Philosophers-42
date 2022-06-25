@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/23 16:34:16 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/25 23:42:05 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	init_philo(t_data *data)
 
 	i = 0;
 	data->id_philo = 0;
-	while(i < data->number_of_philo - 1)
+	while(i < data->number_of_philo)
 	{
 		data->id_philo++;
 		if(pthread_create(&data->philos[i].tid, NULL, &philo_routine, data))
@@ -57,7 +57,7 @@ int	init_philo(t_data *data)
 		if (data->time_rules.ate_max_imposed == TRUE)
 			data->philos[i].ate_max = data->time_rules.max_philo_must_eat;
 		i++;
-		usleep(10); /////////////////////////////// INTERVAL BORN PHILO
+		usleep(30); /////////////////////////////// INTERVAL BORN PHILO
 	}
 	while (data->id_philo > 0)
 	{
