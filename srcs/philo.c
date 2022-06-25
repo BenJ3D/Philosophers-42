@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/25 18:13:09 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/25 21:39:18 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,11 @@ void	*philo_routine(void *arg)
 		&& data->philos[index_philo - 1].ate_nb \
 		== data->philos[index_philo - 1].ate_max)
 			break ;
-		if (data->somebody_is_dead == FALSE)
 		philo_sleeping(data, index_philo);
 		philo_thinking(data, index_philo);
 	}
 	print_message(STATE_OVER, index_philo, data->philos[index_philo - 1].tid, \
-		data, 0);
+		data);
 	return (0);
 }
 
@@ -44,10 +43,10 @@ int	init_philo(t_data *data)
 
 	i = 0;
 	data->id_philo = 0;
-	while(i < data->number_of_philo)
+	while (i < data->number_of_philo)
 	{
 		data->id_philo++;
-		if(pthread_create(&data->philos[i].tid, NULL, &philo_routine, data))
+		if (pthread_create(&data->philos[i].tid, NULL, &philo_routine, data))
 			return (EXIT_FAILURE);
 		data->philos[i].is_died = FALSE;
 		data->philos[i].ate_nb = 0;

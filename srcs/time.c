@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/25 18:13:21 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/25 21:37:03 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,12 @@ int	time_init(t_data *data)
 
 long	time_get(t_data *data)
 {
-	long timesec;
-	
-	// pthread_mutex_lock(&data->mtx_lock_gettime);
+	long	timesec;
+
 	gettimeofday(&data->current_time, NULL);
 	timesec = (data->current_time.tv_sec) % 1000000;
 	timesec *= 1000;
 	timesec += data->current_time.tv_usec / 1000;
-	// pthread_mutex_unlock(&data->mtx_lock_gettime);
 	return (timesec - data->start_time);
 }
 
