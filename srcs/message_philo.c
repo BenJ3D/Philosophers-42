@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:53:48 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/26 18:52:09 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/26 19:31:52 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	print_message(t_state state, int pid, pthread_t tid, t_data *data)
 	else if (state == STATE_OVER && data->somebody_is_dead == FALSE)
 		printf("%i must eat count reached\n", pid);
 	pthread_mutex_unlock(&data->mtx_lock_message);
-	if (state == STATE_DIED || data->somebody_is_dead == TRUE)
+	if ((state == STATE_DIED || data->somebody_is_dead == TRUE) && state != STATE_OVER)
 		return (EXIT_FAILURE);
 	return (0);
 }
