@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 19:21:02 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/25 21:30:43 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/26 19:50:33 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	*monitoring(void *arg)
 	while (1)
 	{
 		if (data->somebody_is_dead == TRUE)
+			break ;
+		if (data->philos[data->number_of_philo - 1].ate_nb == data->time_rules.max_philo_must_eat)
 			break ;
 		i = 0;
 		time = time_get(data);
