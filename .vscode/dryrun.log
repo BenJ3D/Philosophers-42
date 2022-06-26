@@ -2,6 +2,7 @@ make --dry-run --always-make --keep-going --print-directory
 make: Entering directory `/Users/bducrocq/projets/42cursus/philosophers42'
 mkdir ./objs/ 2> /dev/null || true
 gcc    -o3  -I./includes/ -o objs/philo.o -c srcs/philo.c
+ 
 mkdir ./objs/ 2> /dev/null || true
 gcc    -o3  -I./includes/ -o objs/main.o -c srcs/main.c
 mkdir ./objs/ 2> /dev/null || true
@@ -14,6 +15,7 @@ mkdir ./objs/ 2> /dev/null || true
 gcc    -o3  -I./includes/ -o objs/check_arg.o -c srcs/check_arg.c
 mkdir ./objs/ 2> /dev/null || true
 gcc    -o3  -I./includes/ -o objs/routines.o -c srcs/routines.c
+ 
 mkdir ./objs/ 2> /dev/null || true
 gcc    -o3  -I./includes/ -o objs/message_philo.o -c srcs/message_philo.c
 mkdir ./objs/ 2> /dev/null || true
