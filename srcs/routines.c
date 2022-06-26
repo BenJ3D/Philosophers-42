@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:22:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/26 16:16:51 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/26 18:12:18 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,19 +78,19 @@
 int	last_philo_eating(t_data *data, int id)
 {
 	pthread_mutex_lock(&data->forks[id - 1].mtx_forks);
-	data->forks[id - 1].availability = FORK_NOT_AVAILABLE;
+	data->forks[id - 1].is_available = FALSE;
 	if (print_pstate_change(STATE_FORK, id, data->philos->tid, data, id - 1))
 		return (EXIT_FAILURE);
 	pthread_mutex_lock(&data->forks[0].mtx_forks);
-	data->forks[id].availability = FORK_NOT_AVAILABLE;
+	data->forks[id].is_available = FALSE;
 	if (print_pstate_change(STATE_FORK, id, data->philos->tid, data, 0))
 		return (EXIT_FAILURE);
 	data->philos[id - 1].last_ate = time_get(data); // ET ICIIIIIIIIIIIIIIIIIIII
 	if (print_pstate_change(STATE_EATING, id, data->philos->tid, data, 0))
 		return (EXIT_FAILURE);
 	usleep(data->time_rules.time_to_eat);
-	data->forks[0].availability = FORK_AVAILABLE;
-	data->forks[id - 1].availability = FORK_AVAILABLE;
+	data->forks[0].is_available = TRUE;
+	data->forks[id - 1].is_available = TRUE;
 	pthread_mutex_unlock(&data->forks[0].mtx_forks);
 	pthread_mutex_unlock(&data->forks[id - 1].mtx_forks);
 	if (data->time_rules.ate_max_imposed == TRUE)
@@ -130,19 +130,19 @@ int	philo_eating(t_data *data, int id)
 	else
 	{
 		pthread_mutex_lock(&data->forks[id - 1].mtx_forks);
-		data->forks[id - 1].availability = FORK_NOT_AVAILABLE;
+		data->forks[id - 1].is_available = FALSE;
 		if (print_pstate_change(STATE_FORK, id, data->philos->tid, data, id - 1))
 			return (EXIT_FAILURE);
 		pthread_mutex_lock(&data->forks[id].mtx_forks);
-		data->forks[id].availability = FORK_NOT_AVAILABLE;
+		data->forks[id].is_available = FALSE;
 		if (print_pstate_change(STATE_FORK, id, data->philos->tid, data, id))
 			return (EXIT_FAILURE);
 		data->philos[id - 1].last_ate = time_get(data); // ET ICIIIIIIIIIIIIIIII
 		if (print_pstate_change(STATE_EATING, id, data->philos->tid, data, 0))
 			return (EXIT_FAILURE);
 		usleep(data->time_rules.time_to_eat);
-		data->forks[id - 1].availability = FORK_AVAILABLE;
-		data->forks[id].availability = FORK_AVAILABLE;
+		data->forks[id - 1].is_available = TRUE;
+		data->forks[id].is_available = TRUE;
 		pthread_mutex_unlock(&data->forks[id - 1].mtx_forks);
 		pthread_mutex_unlock(&data->forks[id].mtx_forks);
 		if (data->time_rules.ate_max_imposed == TRUE)
