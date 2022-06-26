@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/25 21:48:43 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/26 15:59:07 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ int	init_forks(t_data *data)
 	i = 0;
 	while (i < data->number_of_philo - 1)
 		pthread_mutex_init(&data->forks[i++].mtx_forks, NULL);
-	i = 0;
 	return (0);
 }
 
