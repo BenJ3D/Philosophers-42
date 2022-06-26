@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/26 15:59:07 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/26 19:15:21 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	init_forks(t_data *data)
 	int	i;
 
 	i = 0;
-	while (i < data->number_of_philo - 1)
+	while (i < data->number_of_philo)
 		pthread_mutex_init(&data->forks[i++].mtx_forks, NULL);
 	return (0);
 }
@@ -92,7 +92,6 @@ int	run_philo(t_data *data, int ac, char **argv)
 	if (!(data->forks))
 		return (EXIT_FAILURE);
 	pthread_mutex_init(&data->mtx_lock_message, NULL);
-	pthread_mutex_init(&data->mtx_lock_gettime, NULL);
 	time_init(data);
 	init_forks(data);
 	data->somebody_is_dead = FALSE;
