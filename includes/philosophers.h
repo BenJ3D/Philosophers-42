@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 21:20:54 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/26 18:11:00 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/26 18:13:55 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,5 +148,7 @@ int						exit_clean(t_data *data);
 void					dbg_print_rules(t_data *data);
 void					time_print_dbg(t_data *data);
 long					ft_putnbr(long n);
+int					print_pstate_change(t_state state, int pid, pthread_t tid,
+	t_data *data, int dbgfork);
 
 #endif
