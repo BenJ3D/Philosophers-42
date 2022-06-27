@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/27 12:16:58 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/27 15:19:04 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,23 @@ int	time_init(t_data *data)
 {
 	data->start_time = time_get(data);
 	return (0);
+}
+
+long int	get_current_millisecond(void)
+{
+	struct timeval	timeval;
+
+	gettimeofday(&timeval, NULL);
+	return (timeval.tv_sec * 1000 + timeval.tv_usec / 1000);
+}
+
+void	ft_usleep(long int time)
+{
+	long int	start_action;
+
+	start_action = get_current_millisecond();
+	while ((get_current_millisecond() - start_action) < time)
+		usleep(10);
 }
 
 long	time_get(t_data *data)

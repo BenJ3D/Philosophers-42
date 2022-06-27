@@ -13,9 +13,9 @@ mkdir ./objs/ 2> /dev/null || true
 gcc    -o3  -I./includes/ -o objs/tools.o -c srcs/tools.c
 mkdir ./objs/ 2> /dev/null || true
 gcc    -o3  -I./includes/ -o objs/check_arg.o -c srcs/check_arg.c
+ 
 mkdir ./objs/ 2> /dev/null || true
 gcc    -o3  -I./includes/ -o objs/routines.o -c srcs/routines.c
- 
 mkdir ./objs/ 2> /dev/null || true
 gcc    -o3  -I./includes/ -o objs/message_philo.o -c srcs/message_philo.c
 mkdir ./objs/ 2> /dev/null || true

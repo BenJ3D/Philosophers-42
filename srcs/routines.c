@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:22:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/26 20:51:04 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/27 15:33:36 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,14 @@ int	philo_eating(t_data *data, int id)
 	if ((id) == data->number_of_philo && data->number_of_philo > 1)
 		forkrid = 0;
 	pthread_mutex_lock(&data->forks[id - 1].mtx_forks);
-	print_message(STATE_FORK, id, data->philos->tid, data);
-	// if (data->number_of_philo <= 1 && data->somebody_is_dead == FALSE)
-	// {
-	// 	pthread_mutex_unlock(&data->forks[id - 1].mtx_forks);
-	// 	usleep(data->time_rules.time_to_die * 2);
-	// 	//data->somebody_is_dead = TRUE;
-	// 	// print_message(STATE_DIED, id, data->philos->tid, data);
-	// }
+	print_message(STATE_FORK, id, data->philos->tid, data);														////////////////
 	pthread_mutex_lock(&data->forks[id].mtx_forks);
 	print_message(STATE_FORK, id, data->philos->tid, data);
 	print_message(STATE_EATING, id, data->philos->tid, data);
-	usleep(data->time_rules.time_to_eat);
+	if (data->number_of_philo <= 12)
+		ft_usleep(data->time_rules.time_to_eat / 1000);
+	else
+		usleep(data->time_rules.time_to_eat);
 	pthread_mutex_unlock(&data->forks[id - 1].mtx_forks);
 	pthread_mutex_unlock(&data->forks[id].mtx_forks);
 	if (data->time_rules.ate_max_imposed == TRUE)
@@ -44,7 +40,10 @@ int	philo_eating(t_data *data, int id)
 int	philo_sleeping(t_data *data, int id)
 {
 	print_message(STATE_SLEEP, id, data->philos->tid, data);
-	usleep(data->time_rules.time_to_sleep);
+	if (data->number_of_philo <= 12)
+		ft_usleep(data->time_rules.time_to_sleep / 1000);
+	else
+		usleep(data->time_rules.time_to_sleep);
 	return (0);
 }
 
