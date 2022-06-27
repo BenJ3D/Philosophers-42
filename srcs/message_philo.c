@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:53:48 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/27 18:07:14 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/27 18:37:41 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	print_message(t_state state, int pid, pthread_t tid, t_data *data)
 {	
 	pthread_mutex_lock(&data->mtx_lock_message);
 	if (data->somebody_is_dead == FALSE)
-		printf("%li\t", time_get(data));
+		printf("%li ", time_get(data));
 	if (state == STATE_EATING && data->somebody_is_dead == FALSE)
 	{
 		data->philos[pid - 1].last_ate = (time_get(data));
