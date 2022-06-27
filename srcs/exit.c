@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 19:21:24 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/25 21:10:48 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/27 12:13:58 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,13 @@ int	free_all(t_data *data)
 		i++;
 	}
 	pthread_mutex_destroy(&data->mtx_lock_message);
-	free(data->philos);
-	free(data->forks);
-	free(data->tid);
-	free(data->monitor.time_control);
+	if (data->number_of_philo > 1)
+	{
+		free(data->forks);
+		free(data->philos);
+		free(data->tid);
+		free(data->monitor.time_control);
+	}
 	return (0);
 }
 

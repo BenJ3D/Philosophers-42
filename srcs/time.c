@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/25 21:37:03 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/27 12:16:58 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ long	time_get(t_data *data)
 
 void	time_print(t_data *data)
 {
-	printf("%lu", time_get(data));
+	gettimeofday(&data->current_time, NULL);
+	printf("%lu\t", time_get(data));
 }
 
 void	time_print_dbg(t_data *data)

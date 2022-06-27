@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/26 20:44:20 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/27 12:39:32 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,24 @@ int	init_philo(t_data *data)
 	return (0);
 }
 
+int	run_one_philo(t_data *data)
+{
+	time_print(data);
+	printf("%i has taken a fork\n", 1);
+	usleep(data->time_rules.time_to_die);
+	time_print(data);
+	printf("%i is died\n", 1);
+	exit_clean(data);
+	return (EXIT_FAILURE);
+}
+
 int	init_forks(t_data *data)
 {
 	int	i;
 
 	i = 0;
 	while (i < data->number_of_philo)
-		pthread_mutex_init(&data->forks[i++].mtx_forks, NULL);
+		pthread_mutex_init(&data->forks[i++].mtx_forks, 0);
 	return (0);
 }
 
@@ -91,9 +102,12 @@ int	run_philo(t_data *data, int ac, char **argv)
 	data->forks = (t_fork *)malloc(sizeof(t_fork) * data->number_of_philo);
 	if (!(data->forks))
 		return (EXIT_FAILURE);
-	pthread_mutex_init(&data->mtx_lock_message, NULL);
+	pthread_mutex_init(&data->mtx_lock_message, 0);
 	time_init(data);
 	init_forks(data);
+	if (data->number_of_philo == 1)
+		if (run_one_philo(data))
+			return (0);
 	data->somebody_is_dead = FALSE;
 	init_monitoring(data);
 	init_philo(data);
