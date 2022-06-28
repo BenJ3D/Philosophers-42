@@ -6,7 +6,7 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/29 16:05:24 by cfatrane          #+#    #+#              #
-#    Updated: 2022/06/28 13:42:55 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/06/28 14:28:15 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ HEADER = ./includes/philosophers.h
 # Name
 
 SRC_NAME =	philo.c					\
+			mutex.c					\
 			main.c					\
 			error.c					\
 			parsing.c				\
@@ -49,9 +50,11 @@ OBJ = $(addprefix $(OBJ_PATH), $(OBJ_NAME))
 
 # Flags
 
-CC = gcc $(CFLAGS) -fsanitize=thread $(OPTIFLAG)
+CC = gcc $(CFLAGS) $(SANITIZE) $(OPTIFLAG)
 
 CFLAGS = -Wall -Wextra -Werror
+
+SANITIZE =# -fsanitize=thread
 
 OPTIFLAG = -o3 -g3
 

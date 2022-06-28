@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 21:20:54 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/28 12:00:07 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/28 14:12:24 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ typedef struct s_data
 	t_time_rules		time_rules;
 	pthread_mutex_t		mtx_lock_message;
 	pthread_mutex_t		mtx_get_time;
+	pthread_mutex_t		mtx_lock_m1;
 	t_bool				somebody_is_dead;
 	t_error				error;
 	struct timeval		current_time;
@@ -109,6 +110,7 @@ int						init_monitoring(t_data *data);
 int						run_philo(t_data *data, int ac, char **argv);
 int						check_last_ate(t_data data, int id);
 int						exit_clean(t_data *data);
+int						init_mutex(t_data *data);
 
 /******-------------- time function --------------******/
 

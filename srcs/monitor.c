@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 19:21:02 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/28 11:58:56 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/28 14:00:14 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,6 @@ int	init_monitoring(t_data *data)
 		data->monitor.time_control[i++] = 0;
 	if (pthread_create(&data->monitor.tid, NULL, &monitoring, data))
 		return (EXIT_FAILURE);
-	pthread_detach(data->monitor.tid);
+	pthread_join(data->monitor.tid, NULL);
 	return (0);
 }

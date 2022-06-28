@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/28 12:00:36 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/28 14:28:54 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ void	*philo_routine(void *arg)
 	int			index_philo;
 
 	data = arg;
+	//pthread_mutex_lock(&data->mtx_lock_m1);
 	index_philo = data->id_philo;
 	data->philos[index_philo - 1].id = index_philo;
+//	pthread_mutex_unlock(&data->mtx_lock_m1);
 	while (1)
 	{
 		if (data->somebody_is_dead == TRUE)
@@ -44,13 +46,17 @@ int	init_philo(t_data *data)
 	data->id_philo = 0;
 	while (i < data->number_of_philo)
 	{
+	//	pthread_mutex_lock(&data->mtx_lock_m1);
 		data->id_philo++;
+	//	pthread_mutex_unlock(&data->mtx_lock_m1);
 		if (pthread_create(&data->philos[i].tid, NULL, &philo_routine, data))
 			return (EXIT_FAILURE);
 		data->philos[i].is_died = FALSE;
 		data->philos[i].ate_nb = 0;
 		data->philos[i].last_ate = time_get(data);
+	//	pthread_mutex_lock(&data->mtx_lock_m1);
 		data->philos[i].id = data->id_philo;
+	//	pthread_mutex_unlock(&data->mtx_lock_m1);
 		if (data->time_rules.ate_max_imposed == TRUE)
 			data->philos[i].ate_max = data->time_rules.max_philo_must_eat;
 		i++;
@@ -101,8 +107,7 @@ int	run_philo(t_data *data, int ac, char **argv)
 	data->forks = (t_fork *)malloc(sizeof(t_fork) * data->number_of_philo);
 	if (!(data->forks))
 		return (EXIT_FAILURE);
-	pthread_mutex_init(&data->mtx_lock_message, 0);
-	pthread_mutex_init(&data->mtx_get_time, 0);
+	init_mutex(data);
 	time_init(data);
 	init_forks(data);
 	if (data->number_of_philo == 1)
