@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 21:20:54 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/28 12:00:07 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/28 18:40:56 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,5 +141,9 @@ int						ft_putstr_fd(char *s, int fd);
 /******---------- clean exit function -----------******/
 
 int						exit_clean(t_data *data);
+
+/******-------------- debug function -------------******/
+
+int						print_message_dbg(t_state state, int pid, t_data *data, int fkid);
 
 #endif

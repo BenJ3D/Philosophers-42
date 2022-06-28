@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:22:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/28 11:20:04 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/28 18:42:24 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	philo_eating(t_data *data, int id)
 		forkrid = 0;
 	pthread_mutex_lock(&data->forks[id - 1].mtx_forks);
 	print_message(STATE_FORK, id, data);
-	pthread_mutex_lock(&data->forks[id].mtx_forks);
+	pthread_mutex_lock(&data->forks[forkrid].mtx_forks);
 	print_message(STATE_FORK, id, data);
 	print_message(STATE_EATING, id, data);
 	if (data->number_of_philo <= 12)
@@ -29,7 +29,7 @@ int	philo_eating(t_data *data, int id)
 	else
 		usleep(data->time_rules.time_to_eat);
 	pthread_mutex_unlock(&data->forks[id - 1].mtx_forks);
-	pthread_mutex_unlock(&data->forks[id].mtx_forks);
+	pthread_mutex_unlock(&data->forks[forkrid].mtx_forks);
 	if (data->time_rules.ate_max_imposed == TRUE)
 		data->philos[id - 1].ate_nb++;
 	if (data->somebody_is_dead == TRUE)
