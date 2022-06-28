@@ -6,7 +6,7 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/29 16:05:24 by cfatrane          #+#    #+#              #
-#    Updated: 2022/06/28 11:15:46 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/06/28 12:12:36 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,6 @@ SRC_NAME =	philo.c					\
 			message_philo.c			\
 			time.c					\
 			exit.c					\
-			ft_putnbr.c				\
 			monitor.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
@@ -50,28 +49,15 @@ OBJ = $(addprefix $(OBJ_PATH), $(OBJ_NAME))
 
 # Flags
 
-CC = gcc $(CFLAGS) $(SANITIZE) $(THREAD) $(OPTIFLAG) $(LLDBFLAG)
+CC = gcc $(CFLAGS) $(OPTIFLAG)
 
 CFLAGS = -Wall -Wextra -Werror
-SANITIZE =# -fsanitize=address
-THREAD =# -fsanitize=thread
-LLDBFLAG =# -g3
+
 OPTIFLAG = -o3
 
 # Rules
 
 all: $(NAME) 
-
-# $(NAME): $(OBJ)
-# ifeq ($(shell uname -s), Linux)
-# 	@echo "\033[34mCreation of $(NAME) on linux ...\033[0m"
-# 	@$(CC) $(OBJ) -o $@ -lpthread
-# 	@echo "\033[32m$(NAME) created\n\033[0m"
-# else
-# 	@echo "\033[34mCreation of $(NAME) ...\033[0m"
-# 	@$(CC) $(OBJ) -o $@
-# 	@echo "\033[32m$(NAME) created\n\033[0m"
-# endif
 
 $(NAME): $(OBJ)
 	@echo "\033[34mCreation of $(NAME) on linux ...\033[0m"
@@ -106,5 +92,3 @@ git:
 	@git push
 
 .PHONY: all, clean, fclean, re
-
-#	@printf "\r\033[K\tCompilation de $(COLOR_PURPLE)$< ==> $@\$(COLOR_NORM)"

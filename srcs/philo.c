@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/28 11:19:20 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/28 12:00:36 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ int	run_philo(t_data *data, int ac, char **argv)
 	if (!(data->forks))
 		return (EXIT_FAILURE);
 	pthread_mutex_init(&data->mtx_lock_message, 0);
+	pthread_mutex_init(&data->mtx_get_time, 0);
 	time_init(data);
 	init_forks(data);
 	if (data->number_of_philo == 1)

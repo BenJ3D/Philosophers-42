@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 21:20:54 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/28 11:18:48 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/28 12:00:07 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,14 @@ typedef struct s_time_rules
 
 typedef struct s_fork
 {
-	t_bool				is_available;
 	pthread_mutex_t		mtx_forks;
 }				t_fork;
+
 typedef struct s_philo
 {
 	pthread_t			tid;
 	int					id;
 	t_bool				is_died;
-	t_state				state_philo;
 	int					ate_nb;
 	t_bool				ate_max;
 	long				last_ate;
@@ -90,7 +89,7 @@ typedef struct s_data
 	t_fork				*forks;
 	t_time_rules		time_rules;
 	pthread_mutex_t		mtx_lock_message;
-	pthread_mutex_t		mtx_lock_gettime;
+	pthread_mutex_t		mtx_get_time;
 	t_bool				somebody_is_dead;
 	t_error				error;
 	struct timeval		current_time;
@@ -131,24 +130,16 @@ long					philo_check_is_died(t_data *data, int id);
 
 int						ft_atoi_long(const char *src);
 int						ft_isdigit(int c);
-int						ft_putstr_fd(char *s, int fd);
 
 /******----------- Error management -----------******/
 
 int						check_is_valid_int(char *str, int i);
 int						check_int_max_or_min(long long nb);
 int						write_error_type(int error_type);
+int						ft_putstr_fd(char *s, int fd);
 
 /******---------- clean exit function -----------******/
 
 int						exit_clean(t_data *data);
-
-/******----------- debug functions ------------******/
-
-void					dbg_print_rules(t_data *data);
-void					time_print_dbg(t_data *data);
-long					ft_putnbr(long n);
-int						print_pstate_change(t_state state, int pid, pthread_t tid,
-	t_data *data, int dbgfork);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/25 21:10:44 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/28 12:03:58 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ int	write_error_type(int error_type)
 		time_to_sleep in ms\n \
 		number_of_times_each_philosopher_must_eat(optional)\n", 1);
 	if (error_type != NO_ERROR)
-		exit(-1);
+		return (-1);
 	return (0);
 }
