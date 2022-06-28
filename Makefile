@@ -6,7 +6,7 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/29 16:05:24 by cfatrane          #+#    #+#              #
-#    Updated: 2022/06/25 21:39:55 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/06/28 11:15:46 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ OBJ = $(addprefix $(OBJ_PATH), $(OBJ_NAME))
 
 CC = gcc $(CFLAGS) $(SANITIZE) $(THREAD) $(OPTIFLAG) $(LLDBFLAG)
 
-CFLAGS =# -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 SANITIZE =# -fsanitize=address
 THREAD =# -fsanitize=thread
 LLDBFLAG =# -g3

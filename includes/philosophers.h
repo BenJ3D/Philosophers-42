@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 21:20:54 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/27 14:59:23 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/28 11:18:48 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,7 @@ typedef struct s_data
 /******-------------- philo prog --------------******/
 
 int						parsing_check(t_data *data, int ac, char **argv);
-int						print_message(t_state state, int pid, pthread_t tid,
-							t_data *data);
+int						print_message(t_state state, int pid, t_data *data);
 int						init_philo(t_data *data);
 void					*philo_routine(void *arg);
 int						init_forks(t_data *data);

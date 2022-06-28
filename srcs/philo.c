@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 16:07:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/27 19:09:44 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/28 11:19:20 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,12 @@ void	*philo_routine(void *arg)
 		philo_eating(data, index_philo);
 		if (data->time_rules.ate_max_imposed == TRUE \
 		&& data->philos[index_philo - 1].ate_nb \
-		== data->philos[index_philo - 1].ate_max)
+		== data->time_rules.max_philo_must_eat)
 			break ;
 		philo_sleeping(data, index_philo);
 		philo_thinking(data, index_philo);
 	}
-	print_message(STATE_OVER, index_philo, data->philos[index_philo - 1].tid, \
-		data);
+	print_message(STATE_OVER, index_philo, data);
 	return (0);
 }
 

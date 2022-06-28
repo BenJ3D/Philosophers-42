@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:53:48 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/27 18:37:41 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/28 11:18:17 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
  * @param data 
  * @return int 
  */
-int	print_message(t_state state, int pid, pthread_t tid, t_data *data)
+int	print_message(t_state state, int pid, t_data *data)
 {	
 	pthread_mutex_lock(&data->mtx_lock_message);
 	if (data->somebody_is_dead == FALSE)

@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 19:21:02 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/06/27 18:50:16 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/06/28 11:21:15 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	check_eat_time(t_data *data, long time, int i)
 		if ((time - data->philos[i].last_ate) > \
 		data->time_rules.time_to_die / 1000)
 		{
-			print_message(STATE_DIED, i + 1, data->philos->tid, data);
+			print_message(STATE_DIED, i + 1, data);
 			pthread_mutex_lock(&data->mtx_lock_message);
 			data->somebody_is_dead = TRUE;
 			break ;
@@ -37,6 +37,7 @@ void	*monitoring(void *arg)
 	long	time;
 
 	data = arg;
+	time = time_get(data);
 	while (1)
 	{
 		if (data->somebody_is_dead == TRUE)
