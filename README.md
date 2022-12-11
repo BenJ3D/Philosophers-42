@@ -41,3 +41,23 @@ Philosopher est un exercice connu quand on veut apprendre a créer des thread et
  message annonçant sa mort.
  • Encore une fois, les philosophes doivent éviter de mourir.
 ```
+
+
+### Compilation :
+
+Pour compiler le projet, exécutez la commande suivante :
+
+```
+make
+```
+
+### Execution :
+
+```
+./philo [number_of_philosophers] [time_to_die] [time_to_eat] [time_to_eat] [number_of_times_each_philosopher_must_eat //option]
+```
+par exemple :
+
+```
+./philo 4 410 200 200
+```
