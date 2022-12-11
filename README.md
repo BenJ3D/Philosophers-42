@@ -2,6 +2,9 @@
 
 ## Le principe / objectif
 
+### Thread
+### Mutex
+
 Philosopher est un exercice connu quand on veut apprendre a créer des thread et gérer leurs accès au variables et sortie standard nottament grâce aux mutex, qui permettent de mettre en attente les autres threads voulant faire une même action au même moment, par exemple afficher un message dans la sortie standard, si pas de gestion, les messages risque d'être mélangés.
 
 ## Sujet :
